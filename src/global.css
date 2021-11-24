@@ -1,7 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --color-primary: #758b8b;
+  --color-background: #e7ebe8;
+  --color-text: #2c2f2c;
+  --color-delete: #c30606;
+  --color-tabs: #64a46b;
+
+  /* Opacities */
+  --opacity-button: 0.8;
+  --opacity-cards: 0.9;
+  --opacity-tabs: 0.2;
+
+  /* Fonts */
+  --font-text: 'Cabin', sans-serif;
+  --font-size-primary: 15px;
+  --font-size-secondary: 12px;
+
+  /* Border radius */
+  --border-radius-cards: 16px;
+  --border-radius-searchbar: 15px;
 }
 
 body {
