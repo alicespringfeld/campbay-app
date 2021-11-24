@@ -3,7 +3,6 @@ import { Button } from './stories/Button';
 import './App.css';
 
 export default function App() {
-  const [count, setCount] = useState(0);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -17,13 +16,9 @@ export default function App() {
 
   return (
     <div className="app">
-      <p>Welcome to my new App!</p>
+      <p>Welcome to my new App, huhhuu!</p>
       <p>
-        <Button
-          size="large"
-          onClick={() => setCount((count) => count + 1)}
-          label={`count is: ${count}`}
-        />
+        <Button size="large" label={'hello'} />
       </p>
       <p>{message}</p>
     </div>
