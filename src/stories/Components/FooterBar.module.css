@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  position: fixed;
+  background-color: var(--color-background);
+  place-items: center;
+  padding-top: 0.7rem;
+  width: 100vw;
+  height: 4.375rem;
+  bottom: 0;
+}
