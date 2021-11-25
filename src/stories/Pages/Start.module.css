@@ -1,3 +1,8 @@
 .mainContainer {
-  background-image: url('/Users/alicespringfeld/campbay-app/src/assets/MountainWoods.png');
+  display: grid;
+  background-image: url('../../assets/MountainWoods.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  place-items: center;
 }
