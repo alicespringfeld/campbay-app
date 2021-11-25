@@ -1,0 +1,28 @@
+.mainContainer {
+  display: grid;
+  place-items: center;
+  margin: 2rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  background-color: var(--color-background);
+  width: 15.869rem;
+  height: 2.907rem;
+  border-radius: var(--border-radius-searchbar);
+  place-items: center;
+  padding: 0.5rem;
+  padding-right: 1rem;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.inputField {
+  border: none;
+  margin: 0;
+  background-color: var(--color-background);
+}
+
+.xIcon {
+  vertical-align: middle;
+}
