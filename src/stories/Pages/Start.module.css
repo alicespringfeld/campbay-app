@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  background-image: url('../../assets/Title_Image.png');
+  background-size: cover;
+}
+
+.mainContainer {
+  display: grid;
+  place-items: center;
+}
+
+.logo {
+  width: 12rem;
+  pointer-events: none;
+}
