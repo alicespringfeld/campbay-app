@@ -32,3 +32,8 @@
 body {
   margin: 0;
 }
+
+::placeholder {
+  font-family: var(--font-text);
+  opacity: 0.5;
+}
