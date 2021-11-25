@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from './stories/Button';
+import { Button } from './stories/Components/Button';
 import './App.css';
 
 export default function App() {
