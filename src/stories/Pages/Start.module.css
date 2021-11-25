@@ -1,8 +1,17 @@
+.container {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  background-image: url('../../assets/Title_Image.png');
+  background-size: cover;
+}
+
 .mainContainer {
   display: grid;
-  background-image: url('../../assets/MountainWoods.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 100vh;
   place-items: center;
+}
+
+.logo {
+  width: 12rem;
+  pointer-events: none;
 }

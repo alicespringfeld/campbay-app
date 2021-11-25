@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from './stories/Components/Button';
+import Button from './stories/Components/Button';
 import './App.css';
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
     <div className="app">
       <p>Welcome to my new App, huhhuu!</p>
       <p>
-        <Button size="large" label={'hello'} />
+        <Button />
       </p>
       <p>{message}</p>
     </div>
