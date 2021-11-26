@@ -1,4 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
+=======
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+>>>>>>> d4ddc7b250496e908d52891355933674148a454f
 import 'leaflet/dist/leaflet.css';
 import styles from './MapOverview.module.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
