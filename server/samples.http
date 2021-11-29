@@ -7,8 +7,13 @@ GET http://localhost:3001/api/locations HTTP/1.1
 POST http://localhost:3001/api/locations HTTP/1.1
 Content-Type: application/json
 
-{
+{  
+   "coordinates": "73645639282647829",
    "address": "Wunderwaldstr. 1, 68932 Donauwörth",
    "landscape": "Forrest",
    "infrastructure": "toilet"
 }
+
+### Delete a location
+DELETE http://localhost:3001/api/locations/73645639282647829 HTTP/1.1 
+

@@ -27,7 +27,7 @@ app.get('/api/locations/', async (_request, response) => {
 });
 
 // Add a new location
-app.post('/api/locations', async (request, response) => {
+app.post('/api/locations/', async (request, response) => {
   const locationCollection = getLocationCollection();
   // check if properties are complete
   const newLocation = request.body;
@@ -48,6 +48,24 @@ app.post('/api/locations', async (request, response) => {
   } else {
     locationCollection.insertOne(newLocation);
     response.send(`${newLocation.address} added`);
+  }
+});
+
+// Delete a location
+app.delete('/api/locations/:coordinates', async (request, response) => {
+  const locationCollection = getLocationCollection();
+  const locationCoordinates = request.params.coordinates;
+  const isLocationKnown = await locationCollection.findOne({
+    coordinates: locationCoordinates,
+  });
+  if (!isLocationKnown) {
+    response
+      .status(404)
+      .send("Location doesn't exist. Check another Castle 🏰");
+    return;
+  } else {
+    locationCollection.deleteOne({ coordinates: locationCoordinates });
+    response.send('Deleted');
   }
 });
 
