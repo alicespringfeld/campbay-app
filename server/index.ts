@@ -1,16 +1,18 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
-//import path from 'path';
+import path from 'path';
 import { connectDatabase, getLocationCollection } from './database';
 
 if (!process.env.MONGODB_URI) {
-  throw new Error('No MongoDB URL dotenv variable');
+  throw new Error('No MongoDB URL env variable');
 }
 
 const port = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
+
+app.use(express.static('dist'));
 
 app.get('/api/hello', (_request, response) => {
   response.json({ message: 'Hello from the other side!' });
@@ -50,9 +52,9 @@ app.post('/api/locations', async (request, response) => {
 });
 
 // Handle client routing, return all requests to the app
-//app.get('*', (_request, response) => {
-// response.sendFile(path.join(__dirname, '../dist/index.html'));
-//});
+app.get('*', (_request, response) => {
+  response.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 connectDatabase(process.env.MONGODB_URI).then(() =>
   app.listen(port, () => {
