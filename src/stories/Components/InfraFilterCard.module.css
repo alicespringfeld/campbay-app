@@ -1,7 +1,7 @@
 .mainContainer {
   display: grid;
   width: 277.63px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   place-items: center;
   background-color: var(--color-background-cards);
   font-family: var(--font-text);
@@ -15,11 +15,11 @@
   text-align: center;
 }
 
-.landscapeTabs {
+.infraTabs {
   border: none;
-  border-radius: var(--border-radius-cards);
+  border-radius: 50%;
   background-color: var(--color-tabs);
-  width: 68.44px;
-  height: 72.3px;
+  width: 54px;
+  height: 56px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
