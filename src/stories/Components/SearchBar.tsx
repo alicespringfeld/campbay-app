@@ -5,7 +5,7 @@ export default function SearchBar() {
   return (
     <div className={styles.mainContainer}>
       <form className={styles.container}>
-        <img src="src/assets/magnifyingglass.svg" />
+        <img src="../src/assets/magnifyingglass.svg" />
         <input
           className={styles.inputField}
           type="text"

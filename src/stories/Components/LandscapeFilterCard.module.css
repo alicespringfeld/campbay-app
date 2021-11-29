@@ -1,0 +1,25 @@
+.mainContainer {
+  display: grid;
+  width: 277.63px;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  background-color: var(--color-background);
+  font-family: var(--font-text);
+  font-size: var(--font-size-secondary);
+  border-radius: var(--border-radius-cards);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  padding: 1rem;
+}
+
+.tabsTextContainer {
+  text-align: center;
+}
+
+.landscapeTabs {
+  border: none;
+  border-radius: var(--border-radius-cards);
+  background-color: var(--color-tabs);
+  width: 68.44px;
+  height: 72.3px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
