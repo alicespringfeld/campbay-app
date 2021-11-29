@@ -3,8 +3,12 @@ import styles from './InfraFilterCard.module.css';
 
 export default function InfraFilterCard() {
   return (
-    <section className={styles.mainContainer}>
-      <div className={styles.container}>
+    <div className={styles.mainContainer}>
+      <article>
+        <p className={styles.header}>Infrastructure</p>
+      </article>
+
+      <div className={styles.tabContainer}>
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -14,8 +18,7 @@ export default function InfraFilterCard() {
           </button>
           <p>With costs</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -25,8 +28,7 @@ export default function InfraFilterCard() {
           </button>
           <p>Time limit</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -36,8 +38,7 @@ export default function InfraFilterCard() {
           </button>
           <p>Toilet</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -47,8 +48,7 @@ export default function InfraFilterCard() {
           </button>
           <p>Tap water</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -58,8 +58,7 @@ export default function InfraFilterCard() {
           </button>
           <p>Fireplace allowed</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -69,8 +68,7 @@ export default function InfraFilterCard() {
           </button>
           <p>Fireplace allowed</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img
@@ -80,8 +78,7 @@ export default function InfraFilterCard() {
           </button>
           <p>Shopping facilities</p>
         </div>
-      </div>
-      <div className={styles.container}>
+
         <div className={styles.tabsTextContainer}>
           <button className={styles.infraTabs}>
             <img src="src/assets/FilterIcons_Campbay/plug 1.svg" alt="power" />
@@ -89,6 +86,6 @@ export default function InfraFilterCard() {
           <p>Power access</p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,18 +1,37 @@
 .mainContainer {
   display: grid;
+  grid-template-rows: 10% 90%;
   width: 277.63px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  place-items: center;
+  height: 232px;
   background-color: var(--color-background-cards);
   font-family: var(--font-text);
   font-size: var(--font-size-secondary);
   border-radius: var(--border-radius-cards);
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  place-items: center;
+  padding: 0.3rem;
+  gap: 0.5rem;
+}
+
+.header {
+  font-size: 16px;
+  opacity: 0.4;
+}
+
+.tabContainer {
+  display: grid;
+  width: 277.63px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  place-items: center;
+  font-family: var(--font-text);
+  font-size: var(--font-size-secondary);
   padding: 1rem;
 }
 
 .tabsTextContainer {
   text-align: center;
+  vertical-align: text-top;
+  color: var(--color-primary);
 }
 
 .infraTabs {
