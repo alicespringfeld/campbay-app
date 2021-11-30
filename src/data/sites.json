@@ -1,0 +1,117 @@
+[
+  {
+    "id": 3843,
+    "locationId": "Riksgransensesupercharger",
+    "name": "Björkliden, Sweden",
+    "status": "CONSTRUCTION",
+    "address": {
+      "street": "Björklidenvägen 70",
+      "city": "Björkliden",
+      "state": null,
+      "zip": "981 93",
+      "countryId": 109,
+      "country": "Sweden",
+      "regionId": 101,
+      "region": "Europe"
+    },
+    "gps": {
+      "latitude": 68.407105,
+      "longitude": 18.676377
+    },
+    "stallCount": 3,
+    "counted": true,
+    "elevationMeters": 471,
+    "powerKilowatt": 250,
+    "solarCanopy": false,
+    "battery": false,
+    "statusDays": 12,
+    "urlDiscuss": false
+  },
+  {
+    "id": 3844,
+    "locationId": "brestfrsupercharger",
+    "name": "Brest, France",
+    "status": "CONSTRUCTION",
+    "address": {
+      "street": "Les Portes De Brest,105 Rue Pierre Jakez Helias",
+      "city": "Guipavas",
+      "state": null,
+      "zip": "29490",
+      "countryId": 110,
+      "country": "France",
+      "regionId": 101,
+      "region": "Europe"
+    },
+    "gps": {
+      "latitude": 48.416667,
+      "longitude": -4.436329
+    },
+    "stallCount": 12,
+    "counted": true,
+    "elevationMeters": 62,
+    "powerKilowatt": 250,
+    "solarCanopy": false,
+    "battery": false,
+    "statusDays": 12,
+    "urlDiscuss": true
+  },
+  {
+    "id": 2162,
+    "locationId": "pfaffenhofensupercharger",
+    "name": "Pfaffenhofen, Germany",
+    "status": "OPEN",
+    "address": {
+      "street": "Siebenecken 1",
+      "city": "Pfaffenhofen an der Ilm",
+      "state": null,
+      "zip": "85276",
+      "countryId": 103,
+      "country": "Germany",
+      "area": "Bavaria",
+      "regionId": 101,
+      "region": "Europe"
+    },
+    "gps": {
+      "latitude": 48.518159,
+      "longitude": 11.562124
+    },
+    "dateOpened": "2020-01-25",
+    "stallCount": 24,
+    "counted": true,
+    "elevationMeters": 500,
+    "powerKilowatt": 250,
+    "solarCanopy": false,
+    "battery": false,
+    "statusDays": 0,
+    "urlDiscuss": true
+  },
+  {
+    "id": 223,
+    "locationId": "golsupercharger",
+    "name": "Gol, Norway",
+    "status": "OPEN",
+    "address": {
+      "street": "Heradvegen 5",
+      "city": "Gol",
+      "state": null,
+      "zip": "3550",
+      "countryId": 105,
+      "country": "Norway",
+      "regionId": 101,
+      "region": "Europe"
+    },
+    "gps": {
+      "latitude": 60.70232,
+      "longitude": 8.9862
+    },
+    "dateOpened": "2013-08-30",
+    "stallCount": 12,
+    "counted": true,
+    "elevationMeters": 201,
+    "powerKilowatt": 130,
+    "solarCanopy": false,
+    "battery": false,
+    "statusDays": 0,
+    "urlDiscuss": false
+  }
+]
