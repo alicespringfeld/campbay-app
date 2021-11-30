@@ -23,6 +23,7 @@
   background-color: var(--color-background);
 }
 
-.xIcon {
+.cancel {
   vertical-align: middle;
+  border: none;
 }
