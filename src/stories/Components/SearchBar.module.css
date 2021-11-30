@@ -1,15 +1,15 @@
 .mainContainer {
   display: grid;
+  z-index: 1;
   place-items: center;
-  margin: 2rem;
+  padding: 2rem;
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr 8fr 1fr;
+  width: 14rem;
   background-color: var(--color-background);
-  width: 15.869rem;
-  height: 2.907rem;
   border-radius: var(--border-radius-searchbar);
   place-items: center;
   padding: 0.5rem;

@@ -3,18 +3,18 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './MapOverview.module.css';
 import SearchBar from '../Components/SearchBar';
+import FooterBar from '../Components/FooterBar';
 
 export default function MapOverview(): JSX.Element {
   return (
-    <div>
+    <div className={styles.mapPage}>
+      <SearchBar />
       <MapContainer
         center={[51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={true}
         className={styles.leafletContainer}
       >
-        <SearchBar />
-
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -25,6 +25,8 @@ export default function MapOverview(): JSX.Element {
           </Popup>
         </Marker>
       </MapContainer>
+
+      <FooterBar />
     </div>
   );
 }
