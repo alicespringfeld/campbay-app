@@ -9,6 +9,7 @@ export default function MapOverview(): JSX.Element {
   return (
     <div className={styles.mapPage}>
       <SearchBar />
+
       <MapContainer
         center={[51.505, -0.09]}
         zoom={13}
@@ -25,6 +26,12 @@ export default function MapOverview(): JSX.Element {
           </Popup>
         </Marker>
       </MapContainer>
+      <button className={styles.navigateButton}>
+        <img
+          src="src/assets/FilterIcons_Campbay/navigateIcon.svg"
+          alt="navigate"
+        />
+      </button>
 
       <FooterBar />
     </div>
