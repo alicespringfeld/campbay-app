@@ -19,7 +19,7 @@ app.get('/api/hello', (_request, response) => {
 });
 
 // Get all locations
-app.get('/api/locations/', async (_request, response) => {
+app.get('/api/locations', async (_request, response) => {
   const locationCollection = getLocationCollection();
   const cursor = locationCollection.find();
   const allLocations = await cursor.toArray();
@@ -27,19 +27,21 @@ app.get('/api/locations/', async (_request, response) => {
 });
 
 // Add a new location
-app.post('/api/locations/', async (request, response) => {
+app.post('/api/locations', async (request, response) => {
   const locationCollection = getLocationCollection();
   // check if properties are complete
   const newLocation = request.body;
   if (
     typeof newLocation.address !== 'string' ||
     typeof newLocation.landscape !== 'string' ||
-    typeof newLocation.infrastructure !== 'string'
+    typeof newLocation.infrastructure !== 'string' ||
+    typeof newLocation.latitude !== 'number' ||
+    typeof newLocation.longitude !== 'number'
   ) {
     response.status(400).send('Missing properties');
     return;
   }
-  // check if username is already taken in our database
+  // check if adress is already taken in our database
   const isLocationKnown = await locationCollection.findOne({
     username: newLocation.address,
   });

@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './MapOverview.module.css';
 import SearchBar from '../Components/SearchBar';
 import FooterBar from '../Components/FooterBar';
-import sitesData from '../../data/sites.json';
 
-export default function MapOverview(): JSX.Element {
-  const filteredLocations = sitesData.filter(
-    (site) => site.address.area === 'Bavaria'
-  );
+type LocationProps = {
+  address: string;
+  landscape: string;
+  infrastructure: string;
+  latitude: number;
+  longitude: number;
+  id: number;
+};
+
+export default function MapOverview({
+  address,
+  landscape,
+  infrastructure,
+  latitude,
+  longitude,
+  id,
+}: LocationProps): JSX.Element {
+  const [results, setResults] = useState<LocationProps[] | null>([]);
+
+  const getLocations = async () => {
+    const response = await fetch('/api/locations', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const locations = await response.json();
+    console.log(locations);
+    setResults(locations.results);
+  };
+  useEffect(() => {
+    getLocations();
+  }, []);
 
   return (
     <div className={styles.mapPage}>
@@ -25,16 +54,14 @@ export default function MapOverview(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {filteredLocations.map((site) => (
+        {results?.map((result) => (
           <Marker
-            key={site.id}
-            position={[site.gps.latitude, site.gps.longitude]}
+            key={result.id}
+            position={[result.latitude, result.longitude]}
           >
-            <Popup position={[site.gps.latitude, site.gps.longitude]}>
+            <Popup position={[result.latitude, result.longitude]}>
               <div>
-                <h3>
-                  {'Adress: ' + site.address.street + ', ' + site.address.city}
-                </h3>
+                <h3>{'Adress: ' + result.address}</h3>
               </div>
             </Popup>
           </Marker>
