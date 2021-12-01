@@ -14,14 +14,7 @@ type LocationProps = {
   id: number;
 };
 
-export default function MapOverview({
-  address,
-  landscape,
-  infrastructure,
-  latitude,
-  longitude,
-  id,
-}: LocationProps): JSX.Element {
+export default function MapOverview(): JSX.Element {
   const [results, setResults] = useState<LocationProps[] | null>([]);
 
   const getLocations = async () => {
