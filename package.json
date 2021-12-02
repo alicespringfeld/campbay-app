@@ -17,6 +17,7 @@
     "lint--fix": "stylelint \"**/*.css\" --fix && eslint . --fix && prettier . --check"
   },
   "dependencies": {
+    "@types/geojson": "^7946.0.8",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "leaflet": "^1.7.1",

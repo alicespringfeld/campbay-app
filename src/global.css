@@ -38,3 +38,7 @@ body {
   font-family: var(--font-text);
   opacity: 0.5;
 }
+
+input:focus {
+  outline: none !important;
+}

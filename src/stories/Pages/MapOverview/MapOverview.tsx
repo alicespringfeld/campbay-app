@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import styles from './MapOverview.module.css';
 import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
+import LocationMarker from '../../Components/UserLocation';
 
 type LocationProps = {
   address: string;
@@ -53,6 +54,7 @@ export default function MapOverview(): JSX.Element {
             </Popup>
           </Marker>
         ))}
+        <LocationMarker />
       </MapContainer>
       <button className={styles.navigateButton}>
         <img
