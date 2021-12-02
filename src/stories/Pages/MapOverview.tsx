@@ -15,22 +15,16 @@ type LocationProps = {
 };
 
 export default function MapOverview(): JSX.Element {
-  const [results, setResults] = useState<LocationProps[] | null>([]);
+  const [locations, setLocations] = useState<LocationProps[] | null>([]);
 
-  const getLocations = async () => {
-    const response = await fetch('/api/locations', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const locations = await response.json();
-    console.log(locations);
-    setResults(locations.results);
+  const fetchLocation = async () => {
+    const response = await fetch('/api/locations');
+    const data = await response.json();
+    setLocations(data);
   };
+
   useEffect(() => {
-    getLocations();
+    fetchLocation();
   }, []);
 
   return (
@@ -47,14 +41,14 @@ export default function MapOverview(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {results?.map((result) => (
+        {locations?.map((location) => (
           <Marker
-            key={result.id}
-            position={[result.latitude, result.longitude]}
+            key={location.id}
+            position={[location.latitude, location.longitude]}
           >
-            <Popup position={[result.latitude, result.longitude]}>
+            <Popup position={[location.latitude, location.longitude]}>
               <div>
-                <h3>{'Adress: ' + result.address}</h3>
+                <h3>{'Adress: ' + location.address}</h3>
               </div>
             </Popup>
           </Marker>
