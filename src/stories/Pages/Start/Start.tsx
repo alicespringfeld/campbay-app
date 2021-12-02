@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Start.module.css';
-import Button from '../Components/Button';
+import Button from '../../Components/Button';
 
 export default function Start(): JSX.Element {
   return (

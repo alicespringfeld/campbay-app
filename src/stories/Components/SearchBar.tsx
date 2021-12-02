@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../Components/SearchBar.module.css';
 
 export default function SearchBar() {
+  const [inputValue, setInputValue] = useState('');
+
+  function clearInput(e: { preventDefault: () => void }) {
+    e.preventDefault();
+    setInputValue('');
+  }
+
   return (
     <div className={styles.mainContainer}>
       <form className={styles.container}>
@@ -10,8 +17,12 @@ export default function SearchBar() {
           className={styles.inputField}
           type="text"
           placeholder="search..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
         />
-        <img src="src/assets/X-Icon.svg" className={styles.xIcon} />
+        <button className={styles.cancel} onClick={clearInput}>
+          <img src="src/assets/X-Icon.svg" />
+        </button>
       </form>
     </div>
   );
