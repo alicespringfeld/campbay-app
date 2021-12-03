@@ -11,12 +11,17 @@ export function getLocationCollection() {
   return client.db().collection('locations');
 }
 
-export function getLocationByAttribute(attribute: string, search: string) {
-  const query = { [attribute]: search };
-  return getLocationCollection().find(query).toArray();
-}
+// export function getLocationByAttribute(attribute: string, search: string) {
+//   const query = { [attribute]: search };
+//   return getLocationCollection().find(query).toArray();
+// }
 
-export function getLocationsBySearchQuery(search: string) {
+// Get all Location if there's no searchrequest (fulltext search)
+
+export function getLocationsBySearchQuery(search: string = '') {
   const query = { $text: { $search: search } };
-  return getLocationCollection().find(query).toArray();
+  if (search) {
+    return getLocationCollection().find(query).toArray();
+  }
+  return getLocationCollection().find().toArray();
 }

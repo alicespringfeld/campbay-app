@@ -18,19 +18,19 @@ type LocationProps = {
 
 export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
-  const [, setSearch] = useState('');
+  const [search, setSearch] = useState('');
 
   //const spots = useSpots(search);
 
-  const fetchLocation = async () => {
-    const response = await fetch('/api/locations');
+  const fetchLocation = async (s: string) => {
+    const response = await fetch('/api/locations?search=' + s);
     const data = await response.json();
     setLocations(data);
   };
 
   useEffect(() => {
-    fetchLocation();
-  }, []);
+    fetchLocation(search);
+  }, [search]);
 
   return (
     <div className={styles.mapPage}>

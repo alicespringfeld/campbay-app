@@ -15,7 +15,7 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
 
   useEffect(() => {
     if (inputValue.length === 0) {
-      return;
+      onSearch('');
     }
     const timeoutId = setTimeout(() => {
       onSearch(inputValue);

@@ -23,26 +23,37 @@ app.get('/api/hello', (_request, response) => {
   response.json({ message: 'Hello from the other side!' });
 });
 
-// Get all locations
-app.get('/api/locations', async (_request, response) => {
-  const locationCollection = getLocationCollection();
-  const cursor = locationCollection.find();
-  const allLocations = await cursor.toArray();
-  response.send(allLocations);
-});
+// Get all locations and searched locations
 
-//Get a single location by searchQuery
-
-app.get('/api/locations/search', async (request, response) => {
+app.get('/api/locations', async (request, response) => {
+  // const locationCollection = getLocationCollection();
+  // const cursor = locationCollection.find();
+  // const allLocations = await cursor.toArray();
+  // response.send(allLocations);
   const locations = await getLocationsBySearchQuery(
     request.query.search as string
   );
+  console.log(locations);
   if (locations) {
     response.send(locations);
   } else {
     response.status(404).send('This page is not here. Check another Castle 🏰');
   }
 });
+
+//Get a single location by searchQuery
+
+// app.get('/api/locations/search', async (request, response) => {
+//   const locations = await getLocationsBySearchQuery(
+//     request.query.search as string
+//   );
+//   console.log(locations);
+//   if (locations) {
+//     response.send(locations);
+//   } else {
+//     response.status(404).send('This page is not here. Check another Castle 🏰');
+//   }
+// });
 
 // Get a single location
 // app.get('/api/locations/:type/:value', async (request, response) => {
