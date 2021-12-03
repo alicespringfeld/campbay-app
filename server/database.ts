@@ -15,7 +15,7 @@ export function getLocationByAttribute(attribute: string, search: string) {
   const query = { [attribute]: search };
   return getLocationCollection().find(query).toArray();
 }
-// @ts-ignore
+
 export function getLocationsBySearchQuery(search: string) {
   const query = { $text: { $search: search } };
   return getLocationCollection().find(query).toArray();

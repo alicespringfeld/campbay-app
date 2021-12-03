@@ -5,7 +5,7 @@ import styles from './MapOverview.module.css';
 import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import LocationMarker from '../../Components/UserLocation';
-import useSpots from '../../../utils/useSpots';
+//import useSpots from '../../../utils/useSpots';
 
 type LocationProps = {
   address: string;
@@ -20,7 +20,7 @@ export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
   const [search, setSearch] = useState('');
 
-  const spots = useSpots(search);
+  //const spots = useSpots(search);
 
   const fetchLocation = async () => {
     const response = await fetch('/api/locations');

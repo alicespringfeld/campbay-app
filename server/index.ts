@@ -34,9 +34,8 @@ app.get('/api/locations', async (_request, response) => {
 //Get a single location by searchQuery
 
 app.get('/api/locations/search', async (request, response) => {
-  console.log((request.query as any).search);
   const locations = await getLocationsBySearchQuery(
-    (request.query as any).search
+    request.query.search as string
   );
   if (locations) {
     response.send(locations);
