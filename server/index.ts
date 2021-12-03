@@ -2,7 +2,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import path from 'path';
-import { connectDatabase, getLocationCollection } from './database';
+import {
+  connectDatabase,
+  getLocationByAttribute,
+  getLocationCollection,
+} from './database';
 
 if (!process.env.MONGODB_URI) {
   throw new Error('No MongoDB URL env variable');
@@ -24,6 +28,20 @@ app.get('/api/locations', async (_request, response) => {
   const cursor = locationCollection.find();
   const allLocations = await cursor.toArray();
   response.send(allLocations);
+});
+
+// Get a single location
+app.get('/api/locations/:type/:value', async (request, response) => {
+  const location = await getLocationByAttribute(
+    request.params.type,
+    request.params.value
+  );
+
+  if (location) {
+    response.send(location);
+  } else {
+    response.status(404).send('This page is not here. Check another Castle 🏰');
+  }
 });
 
 // Add a new location
