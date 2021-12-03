@@ -4,8 +4,9 @@ import express from 'express';
 import path from 'path';
 import {
   connectDatabase,
-  getLocationByAttribute,
+  // getLocationByAttribute,
   getLocationCollection,
+  getLocationsBySearchQuery,
 } from './database';
 
 if (!process.env.MONGODB_URI) {
@@ -30,19 +31,33 @@ app.get('/api/locations', async (_request, response) => {
   response.send(allLocations);
 });
 
-// Get a single location
-app.get('/api/locations/:type/:value', async (request, response) => {
-  const location = await getLocationByAttribute(
-    request.params.type,
-    request.params.value
-  );
+//Get a single location by searchQuery
 
-  if (location) {
-    response.send(location);
+app.get('/api/locations/search', async (request, response) => {
+  console.log((request.query as any).search);
+  const locations = await getLocationsBySearchQuery(
+    (request.query as any).search
+  );
+  if (locations) {
+    response.send(locations);
   } else {
     response.status(404).send('This page is not here. Check another Castle 🏰');
   }
 });
+
+// Get a single location
+// app.get('/api/locations/:type/:value', async (request, response) => {
+//   const location = await getLocationByAttribute(
+//     request.params.type,
+//     request.params.value
+//   );
+
+//   if (location) {
+//     response.send(location);
+//   } else {
+//     response.status(404).send('This page is not here. Check another Castle 🏰');
+//   }
+// });
 
 // Add a new location
 app.post('/api/locations', async (request, response) => {
