@@ -5,4 +5,10 @@ export default {
   title: 'Components/SearchBar',
 };
 
-export const Default = () => <SearchBar />;
+export const Default = () => (
+  <SearchBar
+    onSearch={function (value: string): void {
+      throw new Error('Function not implemented.');
+    }}
+  />
+);

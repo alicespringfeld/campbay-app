@@ -18,7 +18,7 @@ type LocationProps = {
 
 export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
-  const [search, setSearch] = useState('');
+  const [, setSearch] = useState('');
 
   //const spots = useSpots(search);
 
