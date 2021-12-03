@@ -5,6 +5,7 @@ import styles from './MapOverview.module.css';
 import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import LocationMarker from '../../Components/UserLocation';
+import useSpots from '../../../utils/useSpots';
 
 type LocationProps = {
   address: string;
@@ -17,6 +18,9 @@ type LocationProps = {
 
 export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
+  const [search, setSearch] = useState('');
+
+  const spots = useSpots(search);
 
   const fetchLocation = async () => {
     const response = await fetch('/api/locations');
@@ -30,8 +34,7 @@ export default function MapOverview(): JSX.Element {
 
   return (
     <div className={styles.mapPage}>
-      <SearchBar />
-
+      <SearchBar onSearch={setSearch} />
       <MapContainer
         center={[51.165691, 10.451526]}
         zoom={6}

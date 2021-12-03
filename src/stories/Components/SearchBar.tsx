@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../Components/SearchBar.module.css';
 
-export default function SearchBar() {
+type SearchFormProps = {
+  onSearch: (value: string) => void;
+};
+
+export default function SearchBar({ onSearch }: SearchFormProps) {
   const [inputValue, setInputValue] = useState('');
 
   function clearInput(e: { preventDefault: () => void }) {
     e.preventDefault();
     setInputValue('');
   }
+
+  useEffect(() => {
+    if (inputValue.length === 0) {
+      return;
+    }
+    const timeoutId = setTimeout(() => {
+      onSearch(inputValue);
+    }, 300);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
 
   return (
     <div className={styles.mainContainer}>

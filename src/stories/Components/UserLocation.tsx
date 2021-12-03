@@ -8,7 +8,7 @@ export default function LocationMarker() {
     click() {
       map.locate();
     },
-    locationfound(e) {
+    locationfound(e: any) {
       setPosition(e.latlng);
       map.flyTo(e.latlng, map.getZoom());
     },
