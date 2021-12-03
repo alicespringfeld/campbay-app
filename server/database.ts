@@ -16,9 +16,9 @@ export function getLocationCollection() {
 //   return getLocationCollection().find(query).toArray();
 // }
 
-// Get all Location if there's no searchrequest (fulltext search)
+// Get all Location if there's no searchrequest (fulltext)
 
-export function getLocationsBySearchQuery(search: string = '') {
+export function getLocationsBySearchQuery(search: string) {
   const query = { $text: { $search: search } };
   if (search) {
     return getLocationCollection().find(query).toArray();

@@ -7,7 +7,7 @@ export default {
 
 export const Default = () => (
   <SearchBar
-    onSearch={function (value: string): void {
+    onSearch={function (): void {
       throw new Error('Function not implemented.');
     }}
   />
