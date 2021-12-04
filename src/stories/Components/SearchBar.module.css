@@ -8,12 +8,11 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 8fr 1fr;
-  width: 14rem;
+  width: 17rem;
   background-color: var(--color-background);
   border-radius: var(--border-radius-searchbar);
   place-items: center;
   padding: 0.5rem;
-  padding-right: 1rem;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
@@ -26,4 +25,12 @@
 .cancel {
   vertical-align: middle;
   border: none;
+  background: none;
+}
+
+.searchBar {
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  margin-top: 1rem;
 }

@@ -2,7 +2,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import path from 'path';
-import { connectDatabase, getLocationCollection } from './database';
+import {
+  connectDatabase,
+  // getLocationByAttribute,
+  getLocationCollection,
+  getLocationsBySearchQuery,
+} from './database';
 
 if (!process.env.MONGODB_URI) {
   throw new Error('No MongoDB URL env variable');
@@ -18,13 +23,51 @@ app.get('/api/hello', (_request, response) => {
   response.json({ message: 'Hello from the other side!' });
 });
 
-// Get all locations
-app.get('/api/locations', async (_request, response) => {
-  const locationCollection = getLocationCollection();
-  const cursor = locationCollection.find();
-  const allLocations = await cursor.toArray();
-  response.send(allLocations);
+// Get all locations and searched locations
+
+app.get('/api/locations', async (request, response) => {
+  // const locationCollection = getLocationCollection();
+  // const cursor = locationCollection.find();
+  // const allLocations = await cursor.toArray();
+  // response.send(allLocations);
+  const locations = await getLocationsBySearchQuery(
+    request.query.search as string
+  );
+  console.log(locations);
+  if (locations) {
+    response.send(locations);
+  } else {
+    response.status(404).send('This page is not here. Check another Castle 🏰');
+  }
 });
+
+//Get a single location by searchQuery
+
+// app.get('/api/locations/search', async (request, response) => {
+//   const locations = await getLocationsBySearchQuery(
+//     request.query.search as string
+//   );
+//   console.log(locations);
+//   if (locations) {
+//     response.send(locations);
+//   } else {
+//     response.status(404).send('This page is not here. Check another Castle 🏰');
+//   }
+// });
+
+// Get a single location
+// app.get('/api/locations/:type/:value', async (request, response) => {
+//   const location = await getLocationByAttribute(
+//     request.params.type,
+//     request.params.value
+//   );
+
+//   if (location) {
+//     response.send(location);
+//   } else {
+//     response.status(404).send('This page is not here. Check another Castle 🏰');
+//   }
+// });
 
 // Add a new location
 app.post('/api/locations', async (request, response) => {

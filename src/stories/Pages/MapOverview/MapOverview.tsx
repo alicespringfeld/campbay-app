@@ -5,6 +5,7 @@ import styles from './MapOverview.module.css';
 import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import LocationMarker from '../../Components/UserLocation';
+//import useSpots from '../../../utils/useSpots';
 
 type LocationProps = {
   address: string;
@@ -17,25 +18,27 @@ type LocationProps = {
 
 export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
+  const [search, setSearch] = useState('');
 
-  const fetchLocation = async () => {
-    const response = await fetch('/api/locations');
+  //const spots = useSpots(search);
+
+  const fetchLocation = async (s: string) => {
+    const response = await fetch('/api/locations?search=' + s);
     const data = await response.json();
     setLocations(data);
   };
 
   useEffect(() => {
-    fetchLocation();
-  }, []);
+    fetchLocation(search);
+  }, [search]);
 
   return (
     <div className={styles.mapPage}>
-      <SearchBar />
-
       <MapContainer
         center={[51.165691, 10.451526]}
         zoom={6}
         scrollWheelZoom={true}
+        zoomControl={false}
         className={styles.leafletContainer}
       >
         <TileLayer
@@ -56,6 +59,9 @@ export default function MapOverview(): JSX.Element {
         ))}
         <LocationMarker />
       </MapContainer>
+
+      <SearchBar onSearch={setSearch} />
+
       <button className={styles.navigateButton}>
         <img
           src="src/assets/FilterIcons_Campbay/navigateIcon.svg"

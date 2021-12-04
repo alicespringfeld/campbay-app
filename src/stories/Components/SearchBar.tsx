@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../Components/SearchBar.module.css';
 
-export default function SearchBar() {
+type SearchFormProps = {
+  onSearch: (value: string) => void;
+};
+
+export default function SearchBar({ onSearch }: SearchFormProps) {
   const [inputValue, setInputValue] = useState('');
 
   function clearInput(e: { preventDefault: () => void }) {
@@ -9,9 +13,22 @@ export default function SearchBar() {
     setInputValue('');
   }
 
+  useEffect(() => {
+    if (inputValue.length === 0) {
+      onSearch('');
+    }
+    const timeoutId = setTimeout(() => {
+      onSearch(inputValue);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
+
   return (
-    <div className={styles.mainContainer}>
-      <form className={styles.container}>
+    <>
+      <form className={styles.container + ' ' + styles.searchBar}>
         <img src="../src/assets/magnifyingglass.svg" />
         <input
           className={styles.inputField}
@@ -24,6 +41,6 @@ export default function SearchBar() {
           <img src="src/assets/X-Icon.svg" />
         </button>
       </form>
-    </div>
+    </>
   );
 }

@@ -2,6 +2,13 @@
 
 GET http://localhost:3001/api/locations HTTP/1.1
 
+### GET a single location
+
+GET http://localhost:3001/api/locations/infrastructure/toilet HTTP/1.1
+
+
+GET http://localhost:3001/api/locations/?search=Gensingen HTTP/1.1
+
 
 ### POST a location
 POST http://localhost:3001/api/locations HTTP/1.1
