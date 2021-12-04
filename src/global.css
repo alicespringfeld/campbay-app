@@ -42,3 +42,7 @@ body {
 input:focus {
   outline: none !important;
 }
+
+input[type='text'] {
+  font-size: 1rem !important;
+}

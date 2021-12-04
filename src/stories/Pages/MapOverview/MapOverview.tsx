@@ -34,11 +34,11 @@ export default function MapOverview(): JSX.Element {
 
   return (
     <div className={styles.mapPage}>
-      <SearchBar onSearch={setSearch} />
       <MapContainer
         center={[51.165691, 10.451526]}
         zoom={6}
         scrollWheelZoom={true}
+        zoomControl={false}
         className={styles.leafletContainer}
       >
         <TileLayer
@@ -59,6 +59,9 @@ export default function MapOverview(): JSX.Element {
         ))}
         <LocationMarker />
       </MapContainer>
+
+      <SearchBar onSearch={setSearch} />
+
       <button className={styles.navigateButton}>
         <img
           src="src/assets/FilterIcons_Campbay/navigateIcon.svg"

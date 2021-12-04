@@ -19,7 +19,7 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
     }
     const timeoutId = setTimeout(() => {
       onSearch(inputValue);
-    }, 300);
+    }, 500);
 
     return () => {
       clearTimeout(timeoutId);
@@ -27,8 +27,8 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
   }, [inputValue]);
 
   return (
-    <div className={styles.mainContainer}>
-      <form className={styles.container}>
+    <>
+      <form className={styles.container + ' ' + styles.searchBar}>
         <img src="../src/assets/magnifyingglass.svg" />
         <input
           className={styles.inputField}
@@ -41,6 +41,6 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
           <img src="src/assets/X-Icon.svg" />
         </button>
       </form>
-    </div>
+    </>
   );
 }
