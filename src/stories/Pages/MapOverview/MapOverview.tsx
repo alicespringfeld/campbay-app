@@ -34,9 +34,7 @@ function CenterButton({ position, setPosition }: any) {
     locationfound(e) {
       setPosition(e.latlng);
     },
-    dragstart() {
-      setPosition(null);
-    },
+    dragstart() {},
   });
 
   return (
@@ -63,6 +61,10 @@ export default function MapOverview(): JSX.Element {
   useEffect(() => {
     fetchLocation(search);
   }, [search]);
+  const currentMarker = new L.Icon({
+    iconAnchor: [23, 53],
+    iconUrl: 'src/assets/LocationIcon_selected.png',
+  });
 
   return (
     <div className={styles.mapPage}>
@@ -98,7 +100,7 @@ export default function MapOverview(): JSX.Element {
           </Marker>
         ))}
         {position && (
-          <Marker position={position}>
+          <Marker icon={currentMarker} position={position}>
             <Popup>You are here</Popup>
           </Marker>
         )}
