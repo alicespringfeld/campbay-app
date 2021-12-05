@@ -34,7 +34,6 @@ function CenterButton({ position, setPosition }: any) {
     locationfound(e) {
       setPosition(e.latlng);
     },
-    dragstart() {},
   });
 
   return (
