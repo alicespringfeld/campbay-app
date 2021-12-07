@@ -1,3 +1,8 @@
+.header {
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+
 .mainContainer {
   display: grid;
   z-index: 1;
@@ -33,4 +38,20 @@
   transform: translateX(-50%);
   position: fixed;
   margin-top: 1rem;
+}
+
+.filter {
+  display: grid;
+  border: none;
+  background-color: var(--color-background);
+  border-radius: 50%;
+  width: 53.02px;
+  height: 56.01px;
+  place-items: center;
+  position: absolute;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  cursor: pointer;
+  right: 1rem;
+  bottom: 10.5rem;
+  z-index: 400;
 }

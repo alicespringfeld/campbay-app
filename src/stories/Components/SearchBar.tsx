@@ -28,19 +28,24 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
 
   return (
     <>
-      <form className={styles.container + ' ' + styles.searchBar}>
-        <img src="../src/assets/magnifyingglass.svg" />
-        <input
-          className={styles.inputField}
-          type="text"
-          placeholder="search..."
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button className={styles.cancel} onClick={clearInput}>
-          <img src="src/assets/X-Icon.svg" />
+      <div className={styles.header}>
+        <form className={styles.container + ' ' + styles.searchBar}>
+          <img src="../src/assets/magnifyingglass.svg" />
+          <input
+            className={styles.inputField}
+            type="text"
+            placeholder="search..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button className={styles.cancel} onClick={clearInput}>
+            <img src="src/assets/X-Icon.svg" />
+          </button>
+        </form>
+        <button className={styles.filter}>
+          <img src="src/assets/Filter_Icon.svg" alt="filter" />
         </button>
-      </form>
+      </div>
     </>
   );
 }
