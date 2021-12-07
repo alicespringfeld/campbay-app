@@ -16,7 +16,6 @@
 .header {
   font-size: 16px;
   opacity: 0.4;
-  margin-bottom: 1.9rem;
 }
 
 .container {
@@ -38,6 +37,7 @@
 
 .landscapeTabs {
   border: none;
+  padding-right: 4rem;
   border-radius: var(--border-radius-cards);
   background-color: var(--color-tabs);
   width: 65px;
