@@ -1,8 +1,8 @@
 .mainContainer {
   display: grid;
   grid-template-rows: 10% 90%;
-  width: 277.63px;
-  height: 232px;
+  width: 17.352rem;
+  height: 14.5rem;
   background-color: var(--color-background-cards);
   font-family: var(--font-text);
   font-size: var(--font-size-secondary);
@@ -20,7 +20,7 @@
 
 .tabContainer {
   display: grid;
-  width: 277.63px;
+  width: 17.352rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   place-items: center;
   font-family: var(--font-text);
