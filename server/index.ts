@@ -4,7 +4,7 @@ import express from 'express';
 import path from 'path';
 import {
   connectDatabase,
-  // getLocationByAttribute,
+  getLocationByAttribute,
   getLocationCollection,
   getLocationsBySearchQuery,
 } from './database';
@@ -55,19 +55,20 @@ app.get('/api/locations', async (request, response) => {
 //   }
 // });
 
-// Get a single location
-// app.get('/api/locations/:type/:value', async (request, response) => {
-//   const location = await getLocationByAttribute(
-//     request.params.type,
-//     request.params.value
-//   );
+// Get a single location by attribute
 
-//   if (location) {
-//     response.send(location);
-//   } else {
-//     response.status(404).send('This page is not here. Check another Castle 🏰');
-//   }
-// });
+app.get('/api/locations/:type/:value', async (request, response) => {
+  const location = await getLocationByAttribute(
+    request.params.type,
+    request.params.value
+  );
+
+  if (location) {
+    response.send(location);
+  } else {
+    response.status(404).send('This page is not here. Check another Castle 🏰');
+  }
+});
 
 // Add a new location
 app.post('/api/locations', async (request, response) => {

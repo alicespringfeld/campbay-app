@@ -11,10 +11,12 @@ export function getLocationCollection() {
   return client.db().collection('locations');
 }
 
-// export function getLocationByAttribute(attribute: string, search: string) {
-//   const query = { [attribute]: search };
-//   return getLocationCollection().find(query).toArray();
-// }
+// Get location by attribute
+
+export function getLocationByAttribute(attribute: string, search: string) {
+  const query = { [attribute]: search };
+  return getLocationCollection().find(query).toArray();
+}
 
 // Get all Location if there's no searchrequest (fulltext)
 

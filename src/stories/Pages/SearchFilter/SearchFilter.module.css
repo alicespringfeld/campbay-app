@@ -34,9 +34,11 @@
   position: absolute;
   left: 2rem;
   background: none;
+  border: 0;
 }
 
 .filter {
   position: absolute;
   right: 2rem;
+  border: 0;
 }

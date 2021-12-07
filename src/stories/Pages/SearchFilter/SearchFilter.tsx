@@ -11,8 +11,12 @@ export default function SearchFilter() {
         <InfraFilterCard />
       </div>
       <div className={styles.footer}>
-        <img className={styles.cancel} src="src/assets/X-Icon.svg" />
-        <img className={styles.filter} src="src/assets/Filter_Button.svg" />
+        <button className={styles.cancel}>
+          <img src="src/assets/X-Icon.svg" />
+        </button>
+        <button className={styles.filter}>
+          <img src="src/assets/Filter_Button.svg" />
+        </button>
       </div>
     </div>
   );
