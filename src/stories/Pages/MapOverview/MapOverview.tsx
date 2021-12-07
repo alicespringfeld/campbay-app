@@ -62,7 +62,11 @@ export default function MapOverview(): JSX.Element {
   }, [search]);
   const currentMarker = new L.Icon({
     iconAnchor: [23, 53],
-    iconUrl: 'src/assets/LocationIcon_selected.png',
+    iconUrl: 'src/assets/pin (1) 1.png',
+  });
+  const allMarkers = new L.Icon({
+    iconAnchor: [23, 53],
+    iconUrl: 'src/assets/FilterIcons_Campbay/pin 1.png',
   });
 
   return (
@@ -80,20 +84,25 @@ export default function MapOverview(): JSX.Element {
         />
         {locations?.map((location) => (
           <Marker
+            icon={allMarkers}
             key={location.id}
             position={[location.latitude, location.longitude]}
           >
-            <Popup
-              className={styles.popup}
-              position={[location.latitude, location.longitude]}
-            >
-              <img
-                className={styles.popupImage}
-                src={'src/assets/0afa121612.jpg'}
-                alt={'camping'}
-              />
-              <div>
-                <h3>{'Adress: ' + location.address}</h3>
+            <Popup position={[location.latitude, location.longitude]}>
+              <div className={styles.popupContent}>
+                <img
+                  className={styles.popupImage}
+                  src={'src/assets/0afa121612.jpg'}
+                  alt={'camping'}
+                />
+                <div className={styles.detailContainer}>
+                  <h3 className={styles.adressLine}>{location.address}</h3>
+                  <div>
+                    <button className={styles.showMore}>
+                      <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
+                    </button>
+                  </div>
+                </div>
               </div>
             </Popup>
           </Marker>

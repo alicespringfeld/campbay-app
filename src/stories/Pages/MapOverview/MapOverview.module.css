@@ -30,13 +30,29 @@
   cursor: pointer;
 }
 
-.popup {
-  display: grid;
+.popupContent {
+  width: 10rem;
+  height: 12rem;
   padding: 0;
+  font-family: var(--font-text);
+  color: var(--color-primary);
+  text-align: center;
+  padding-bottom: 0;
 }
 
 .popupImage {
   width: 100%;
   object-fit: fill;
-  margin: 0;
+}
+
+.adressLine {
+  background-color: rgb(196 196 196 / 33%);
+}
+
+.showMore {
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 0;
 }
