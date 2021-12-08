@@ -3,7 +3,7 @@ import SearchFilter from './SearchFilter';
 
 export default {
   component: 'SearchFilter',
-  title: 'Pages/SearchFilter',
+  title: 'Pages/Searchfilter',
   parameters: {
     layout: 'fullscreen',
   },
