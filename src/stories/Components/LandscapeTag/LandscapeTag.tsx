@@ -26,7 +26,7 @@ export default function LandscapeTag({
       >
         <img src={tag.src} />
       </button>
-      {tag.text}
+      <div className={styles.text}>{tag.text}</div>
     </div>
   );
 }

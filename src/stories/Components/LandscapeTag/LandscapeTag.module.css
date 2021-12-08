@@ -1,12 +1,9 @@
 .container {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
   gap: 0.5rem;
   text-align: center;
   font-family: var(--font-text);
   vertical-align: text-top;
   color: var(--color-primary);
-  position: absolute;
 }
 
 .tag {
@@ -25,4 +22,8 @@
 
 .tag--state-unselected {
   background-color: var(--color-tabs);
+}
+
+.text {
+  padding: 0.5rem;
 }

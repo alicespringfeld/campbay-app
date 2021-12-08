@@ -57,10 +57,11 @@ export default function SearchFilter(): JSX.Element {
     <div className={styles.pageContainer}>
       <div className={styles.cards}>
         <p className={styles.header}>Landscape</p>
-
-        {tags.map((tag) => (
-          <LandscapeTag tag={tag} key={tag.id} onClick={onTagClicked} />
-        ))}
+        <div className={styles.tags}>
+          {tags.map((tag) => (
+            <LandscapeTag tag={tag} key={tag.id} onClick={onTagClicked} />
+          ))}
+        </div>
       </div>
       <footer className={styles.footer}>
         <button className={styles.cancel}>
