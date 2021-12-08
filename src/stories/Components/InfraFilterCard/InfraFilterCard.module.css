@@ -1,4 +1,4 @@
-.mainContainer {
+.cards {
   display: grid;
   grid-template-rows: 10% 90%;
   width: 17.352rem;
@@ -18,7 +18,7 @@
   opacity: 0.4;
 }
 
-.tabContainer {
+.itag {
   display: grid;
   width: 17.352rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -26,19 +26,5 @@
   font-family: var(--font-text);
   font-size: var(--font-size-secondary);
   padding: 1rem;
-}
-
-.tabsTextContainer {
-  text-align: center;
-  vertical-align: text-top;
-  color: var(--color-primary);
-}
-
-.infraTabs {
-  border: none;
-  border-radius: 50%;
-  background-color: var(--color-tabs);
-  width: 54px;
-  height: 56px;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  padding-left: 0.5rem;
 }

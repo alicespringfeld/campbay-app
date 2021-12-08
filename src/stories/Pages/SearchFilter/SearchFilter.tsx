@@ -1,68 +1,77 @@
 import React, { useState } from 'react';
+import InfraFilterCard from '../../Components/InfraFilterCard/InfraFilterCard';
+import InfraTag from '../../Components/InfraTag/InfraTag';
+import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeFilterCard';
 import LandscapeTag from '../../Components/LandscapeTag/LandscapeTag';
 import styles from './SearchFilter.module.css';
 
-const initialTags = [
+const infraTags = [
   {
-    text: 'Forrest',
-    src: 'src/assets/FilterIcons_Campbay/Forrest_Icon.svg',
+    text: 'With costs',
+    src: 'src/assets/FilterIcons_Campbay/dollar-bill 1.svg',
     selected: false,
     id: 0,
   },
   {
-    text: 'Mountains',
-    src: 'src/assets/FilterIcons_Campbay/mountain 1.svg',
+    text: 'Timelimit',
+    src: 'src/assets/FilterIcons_Campbay/stopwatch 1.svg',
     selected: false,
     id: 1,
   },
   {
-    text: 'Field',
-    src: 'src/assets/FilterIcons_Campbay/fields 1.svg',
+    text: 'Toilet',
+    src: 'src/assets/FilterIcons_Campbay/toilet 1.svg',
     selected: false,
     id: 2,
   },
   {
-    text: 'River',
-    src: 'src/assets/FilterIcons_Campbay/river 1.svg',
+    text: 'Tap water',
+    src: 'src/assets/FilterIcons_Campbay/water-tap 1.svg',
     selected: false,
     id: 3,
   },
   {
-    text: 'Lake',
-    src: 'src/assets/FilterIcons_Campbay/lake 1.svg',
+    text: 'Fireplace',
+    src: 'src/assets/FilterIcons_Campbay/fire 1.svg',
     selected: false,
     id: 4,
   },
   {
-    text: 'City',
-    src: 'src/assets/FilterIcons_Campbay/cityscape 1.svg',
+    text: 'Waste disposal',
+    src: 'src/assets/FilterIcons_Campbay/trash (1) 1.svg',
     selected: false,
     id: 5,
+  },
+  {
+    text: 'Shopping facilities',
+    src: 'src/assets/FilterIcons_Campbay/shopping-cart 1.svg',
+    selected: false,
+    id: 6,
+  },
+  {
+    text: 'Power access',
+    src: 'src/assets/FilterIcons_Campbay/plug 1.svg',
+    selected: false,
+    id: 7,
   },
 ];
 
 export default function SearchFilter(): JSX.Element {
-  const [tags, setTags] = useState(initialTags);
+  const [itags, setITags] = useState(infraTags);
 
-  function onTagClicked(id: number): void {
-    const newTags = [...tags];
-    const tag = newTags.find((tag) => tag.id === id);
-    if (tag) {
-      tag.selected = !tag.selected;
+  function onITagClicked(id: number): void {
+    const newITags = [...itags];
+    const itag = newITags.find((itag) => itag.id === id);
+    if (itag) {
+      itag.selected = !itag.selected;
     }
-    setTags(newTags);
+    setITags(newITags);
   }
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.cards}>
-        <p className={styles.header}>Landscape</p>
-        <div className={styles.tags}>
-          {tags.map((tag) => (
-            <LandscapeTag tag={tag} key={tag.id} onClick={onTagClicked} />
-          ))}
-        </div>
-      </div>
+      <LandscapeFilterCard />
+      <InfraFilterCard />
       <footer className={styles.footer}>
         <button className={styles.cancel}>
           <img src="src/assets/X-Icon.svg" />
