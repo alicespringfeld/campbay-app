@@ -44,6 +44,7 @@ const landscapeTags = [
 export default function LandscapeFilterCard() {
   const [ltags, setLTags] = useState(landscapeTags);
 
+  // Select tag
   function onLTagClicked(id: number): void {
     const newLTags = [...ltags];
     const ltag = newLTags.find((ltag) => ltag.id === id);
