@@ -1,0 +1,30 @@
+.container {
+  gap: 0.5rem;
+  text-align: center;
+  font-family: var(--font-text);
+  vertical-align: text-top;
+  color: var(--color-primary);
+}
+
+.tag {
+  border: none;
+  padding-right: 4rem;
+  border-radius: var(--border-radius-cards);
+  background-color: var(--color-tabs);
+  width: 65px;
+  height: 69px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.tag--state-selected {
+  background-color: green;
+}
+
+.tag--state-unselected {
+  background-color: var(--color-tabs);
+}
+
+.text {
+  padding: 0.5rem;
+  font-family: var(--font-text);
+}

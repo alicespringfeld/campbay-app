@@ -1,0 +1,27 @@
+.container {
+  text-align: center;
+  vertical-align: text-top;
+  color: var(--color-primary);
+  place-items: center;
+}
+
+.tag {
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-tabs);
+  width: 54px;
+  height: 56px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.tag--state-selected {
+  background-color: green;
+}
+
+.tag--state-unselected {
+  background-color: var(--color-tabs);
+}
+
+.text {
+  padding: 0.5rem;
+}

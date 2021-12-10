@@ -4,7 +4,7 @@ import express from 'express';
 import path from 'path';
 import {
   connectDatabase,
-  // getLocationByAttribute,
+  //getLocationByAttribute,
   getLocationCollection,
   getLocationsBySearchQuery,
 } from './database';
@@ -26,6 +26,8 @@ app.get('/api/hello', (_request, response) => {
 // Get all locations and searched locations
 
 app.get('/api/locations', async (request, response) => {
+  console.log(request.query);
+
   // const locationCollection = getLocationCollection();
   // const cursor = locationCollection.find();
   // const allLocations = await cursor.toArray();
@@ -33,7 +35,7 @@ app.get('/api/locations', async (request, response) => {
   const locations = await getLocationsBySearchQuery(
     request.query.search as string
   );
-  console.log(locations);
+
   if (locations) {
     response.send(locations);
   } else {
@@ -55,7 +57,8 @@ app.get('/api/locations', async (request, response) => {
 //   }
 // });
 
-// Get a single location
+// Get a single location by attribute
+
 // app.get('/api/locations/:type/:value', async (request, response) => {
 //   const location = await getLocationByAttribute(
 //     request.params.type,
