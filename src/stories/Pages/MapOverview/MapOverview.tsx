@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -14,6 +14,7 @@ import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import { LatLng } from 'leaflet';
 import * as L from 'leaflet';
+import DetailCard from '../../Components/DetailCard/DetailCard';
 
 type LocationProps = {
   address: string;
@@ -50,6 +51,7 @@ export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
   const [search, setSearch] = useState('');
   const [position, setPosition] = useState(new LatLng(0, 0));
+  const [showDetails, setShowDetails] = useState();
 
   const fetchLocation = async (s: string) => {
     const response = await fetch('/api/locations?search=' + s);
@@ -69,6 +71,18 @@ export default function MapOverview(): JSX.Element {
     iconUrl: 'src/assets/FilterIcons_Campbay/pin 1.png',
   });
 
+  let popup;
+
+  if (showDetails) {
+    popup = <DetailCard />;
+  } else {
+    popup = (
+      <>
+        <SearchBar onSearch={setSearch} />
+        <FooterBar />
+      </>
+    );
+  }
   return (
     <div className={styles.mapPage}>
       <MapContainer
@@ -98,7 +112,10 @@ export default function MapOverview(): JSX.Element {
                 <div className={styles.detailContainer}>
                   <h3 className={styles.adressLine}>{location.address}</h3>
                   <div>
-                    <button className={styles.showMore}>
+                    <button
+                      onClick={setShowDetails}
+                      className={styles.showMore}
+                    >
                       <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
                     </button>
                   </div>
@@ -114,10 +131,7 @@ export default function MapOverview(): JSX.Element {
         )}
         <CenterButton position={position} setPosition={setPosition} />
       </MapContainer>
-
-      <SearchBar onSearch={setSearch} />
-
-      <FooterBar />
+      {popup}
     </div>
   );
 }
