@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import InfraFilterCard from '../../Components/InfraFilterCard/InfraFilterCard';
 import LandscapeTag from '../../Components/LandscapeTag/LandscapeTag';
 import styles from './SearchFilter.module.css';
@@ -58,14 +58,14 @@ export default function SearchFilter(): JSX.Element {
   }
 
   // Get selected landscape
-  function FilterFunction(): void {
-    const selectedLandscape = ltags
-      .filter((ltag) => ltag.selected === true)
-      .map((landscape) => landscape.text);
-    const selectedLandscapeList = selectedLandscape.join('+');
-    console.log(selectedLandscapeList);
-    setSearchQuery(selectedLandscapeList);
-  }
+  // function FilterFunction(): void {
+  //   const selectedLandscape = ltags
+  //     .filter((ltag) => ltag.selected === true)
+  //     .map((landscape) => landscape.text);
+  //   const selectedLandscapeList = selectedLandscape.join('+');
+  //   console.log(selectedLandscapeList);
+  //   setSearchQuery(selectedLandscapeList);
+  // }
 
   // Get array of filtered Locations
   async function getFilteredLocations(): Promise<void> {
