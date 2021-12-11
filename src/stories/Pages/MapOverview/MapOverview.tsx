@@ -14,7 +14,6 @@ import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import { LatLng } from 'leaflet';
 import * as L from 'leaflet';
-import DetailCard from '../../Components/DetailCard/DetailCard';
 
 type LocationProps = {
   address: string;
@@ -51,7 +50,8 @@ export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
   const [search, setSearch] = useState('');
   const [position, setPosition] = useState(new LatLng(0, 0));
-  const [showDetails, setShowDetails] = useState();
+  const [showDetails, setShowDetails] = useState<string | null>(null);
+  const [unVisible, setUnVisible] = useState(true || false);
 
   const fetchLocation = async (s: string) => {
     const response = await fetch('/api/locations?search=' + s);
@@ -74,7 +74,41 @@ export default function MapOverview(): JSX.Element {
   let popup;
 
   if (showDetails) {
-    popup = <DetailCard />;
+    popup = (
+      <div className={styles.mainContainer}>
+        {unVisible ? (
+          <div className={styles.container}>
+            <button
+              onClick={() => setUnVisible(!unVisible)}
+              className={styles.swipeAway}
+            >
+              <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
+            </button>
+          </div>
+        ) : null}
+        {unVisible ? (
+          <div>
+            <img
+              className={styles.locationImage}
+              src={'src/assets/5597481_orig-1200x480 2.png'}
+            />
+            {locations?.map((location) => (
+              <section className={styles.detailContainer}>
+                <div className={styles.addressLine}>
+                  Adress: {location.address}
+                </div>
+                <div className={styles.landscapeLine}>
+                  Landscape: {location.landscape}
+                </div>
+                <div className={styles.infraLine}>
+                  Infrastructure: {location.infrastructure}
+                </div>
+              </section>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    );
   } else {
     popup = (
       <>
@@ -131,6 +165,8 @@ export default function MapOverview(): JSX.Element {
         )}
         <CenterButton position={position} setPosition={setPosition} />
       </MapContainer>
+      <SearchBar onSearch={setSearch} />
+      <FooterBar />
       {popup}
     </div>
   );
