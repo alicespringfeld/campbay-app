@@ -46,6 +46,7 @@ export default function SearchFilter(): JSX.Element {
   const [filteredLocations, setFilteredLocations] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [ltags, setLTags] = useState(landscapeTags);
+  const [infraTags, setInfraTags] = useState<any[]>([]);
 
   // Select tag
   function onLTagClicked(id: number): void {
@@ -57,7 +58,7 @@ export default function SearchFilter(): JSX.Element {
     setLTags(newLTags);
   }
 
-  // Get selected landscape
+  //Get selected landscape
   // function FilterFunction(): void {
   //   const selectedLandscape = ltags
   //     .filter((ltag) => ltag.selected === true)
@@ -66,14 +67,28 @@ export default function SearchFilter(): JSX.Element {
   //   console.log(selectedLandscapeList);
   //   setSearchQuery(selectedLandscapeList);
   // }
+  const disabledOptions =
+    infraTags!.filter((tag) => tag.selected)?.length &&
+    ltags!.filter((tag) => tag.selected)?.length;
 
   // Get array of filtered Locations
   async function getFilteredLocations(): Promise<void> {
-    const response = await fetch(`api/locations/:type/:${searchQuery}`);
-    console.log(searchQuery);
-    const body = await response.json();
-    setFilteredLocations(body);
-    console.log(filteredLocations);
+    if (infraTags && ltags) {
+      const selectedInfraTags = infraTags.filter((tag) => tag.selected);
+      const selectedLandscapeTags = ltags.filter((tag) => tag.selected);
+      const params = new URLSearchParams();
+      params.append(
+        'infrastructure',
+        selectedInfraTags[0]?.text?.toLowerCase()
+      );
+      params.append('landscape', selectedLandscapeTags[0]?.text?.toLowerCase());
+      const infraResponse = await fetch(
+        `api/locations/search?${params.toString()}`
+      );
+      const body = await infraResponse.json();
+      setFilteredLocations(body);
+      console.log(filteredLocations);
+    }
   }
 
   return (
@@ -86,7 +101,7 @@ export default function SearchFilter(): JSX.Element {
           ))}
         </div>
       </div>
-      <InfraFilterCard />
+      <InfraFilterCard setInfratags={setInfraTags} />
       <footer className={styles.footer}>
         <button className={styles.cancel}>
           <img src="src/assets/X-Icon.svg" />
@@ -95,6 +110,7 @@ export default function SearchFilter(): JSX.Element {
           type="submit"
           onClick={getFilteredLocations}
           className={styles.filter}
+          disabled={!disabledOptions}
         >
           <img src="src/assets/Filter_Button.svg" />
         </button>
