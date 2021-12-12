@@ -93,9 +93,12 @@ export default function MapOverview(): JSX.Element {
               src={'src/assets/5597481_orig-1200x480 2.png'}
             />
             {locations!
-              .filter((detail) => detail.id === selectedLocation)
+              .filter((location) => location.id === selectedLocation)
               .map((filteredDetails) => (
-                <section className={styles.detailContainer}>
+                <section
+                  key={filteredDetails.id}
+                  className={styles.detailContainer}
+                >
                   <div className={styles.addressLine}>
                     Adress: {filteredDetails.address}
                   </div>
