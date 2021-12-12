@@ -4,10 +4,10 @@ GET http://localhost:3001/api/locations HTTP/1.1
 
 ### GET a single location
 
-GET http://localhost:3001/api/locations/landscape/fields HTTP/1.1
+# GET http://localhost:3001/api/locations/landscape/fields HTTP/1.1
 
 ###
-GET http://localhost:3001/api/locations?landscape=forrest&landscape=lake&infrastructure=toilet HTTP/1.1
+GET http://localhost:3001/api/locations?landscape=forest&landscape=lake&infrastructure=toilet HTTP/1.1
 
 ###
 GET http://localhost:3001/api/locations?landscape=lake&infrastructure=toilet HTTP/1.1
