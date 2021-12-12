@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InfraTag from '../InfraTag/InfraTag';
-import LandscapeFilterCard from '../LandscapeFilterCard/LandscapeFilterCard';
 import styles from './InfraFilterCard.module.css';
 
-const infraTags = [
+const INFRA_TAGS = [
   {
     text: 'Costs',
     src: 'src/assets/FilterIcons_Campbay/dollar-bill 1.svg',
@@ -54,23 +53,29 @@ const infraTags = [
   },
 ];
 
-export default function InfraFilterCard() {
-  const [itags, setITags] = useState(infraTags);
+type InfraProps = {
+  infraTags?: any;
+  setInfratags: any;
+};
 
+export default function InfraFilterCard({
+  infraTags = INFRA_TAGS,
+  setInfratags,
+}: InfraProps) {
   function onITagClicked(id: number): void {
-    const newITags = [...itags];
+    const newITags = [...infraTags];
     const itag = newITags.find((itag) => itag.id === id);
     if (itag) {
       itag.selected = !itag.selected;
     }
-    setITags(newITags);
+    setInfratags(newITags);
   }
 
   return (
     <div className={styles.cards}>
       <p className={styles.header}>Infrastructure</p>
       <div className={styles.itag}>
-        {itags.map((itag) => (
+        {infraTags.map((itag: any) => (
           <InfraTag tag={itag} key={itag.id} onClick={onITagClicked} />
         ))}
       </div>
