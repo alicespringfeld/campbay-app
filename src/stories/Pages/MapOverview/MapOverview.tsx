@@ -1,10 +1,9 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
-  MapConsumer,
   useMapEvents,
   useMap,
 } from 'react-leaflet';
@@ -50,18 +49,19 @@ export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
   const [search, setSearch] = useState('');
   const [position, setPosition] = useState(new LatLng(0, 0));
-  const [showDetails, setShowDetails] = useState<string | null>(null);
-  const [unVisible, setUnVisible] = useState(true || false);
+  const [selectedLocation, setSelectedLocation] = useState(0);
+  const [inVisible, setInVisible] = useState(true || false);
 
-  const fetchLocation = async (s: string) => {
+  const fetchLocations = async (s: string) => {
     const response = await fetch('/api/locations?search=' + s);
     const data = await response.json();
     setLocations(data);
   };
 
   useEffect(() => {
-    fetchLocation(search);
+    fetchLocations(search);
   }, [search]);
+
   const currentMarker = new L.Icon({
     iconAnchor: [23, 53],
     iconUrl: 'src/assets/pin (1) 1.png',
@@ -73,38 +73,44 @@ export default function MapOverview(): JSX.Element {
 
   let popup;
 
-  if (showDetails) {
+  if (selectedLocation) {
     popup = (
       <div className={styles.mainContainer}>
-        {unVisible ? (
+        {inVisible ? (
           <div className={styles.container}>
             <button
-              onClick={() => setUnVisible(!unVisible)}
+              onClick={() => setInVisible(!inVisible)}
               className={styles.swipeAway}
             >
               <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
             </button>
           </div>
         ) : null}
-        {unVisible ? (
+        {inVisible ? (
           <div>
             <img
               className={styles.locationImage}
               src={'src/assets/5597481_orig-1200x480 2.png'}
             />
-            {locations?.map((location) => (
-              <section className={styles.detailContainer}>
-                <div className={styles.addressLine}>
-                  Adress: {location.address}
-                </div>
-                <div className={styles.landscapeLine}>
-                  Landscape: {location.landscape}
-                </div>
-                <div className={styles.infraLine}>
-                  Infrastructure: {location.infrastructure}
-                </div>
-              </section>
-            ))}
+            {locations!
+              .filter((detail) => detail.id === selectedLocation)
+              .map((filteredDetails) => (
+                <section className={styles.detailContainer}>
+                  <div className={styles.addressLine}>
+                    Adress: {filteredDetails.address}
+                  </div>
+                  <div className={styles.landscapeLine}>
+                    Landscape:
+                    <img
+                      src={`src/assets/FilterIcons_Campbay/${filteredDetails.landscape}.svg`}
+                      alt={'arrow'}
+                    />
+                  </div>
+                  <div className={styles.infraLine}>
+                    Infrastructure: {filteredDetails.infrastructure}
+                  </div>
+                </section>
+              ))}
           </div>
         ) : null}
       </div>
@@ -147,7 +153,10 @@ export default function MapOverview(): JSX.Element {
                   <h3 className={styles.adressLine}>{location.address}</h3>
                   <div>
                     <button
-                      onClick={setShowDetails}
+                      onClick={() => {
+                        setSelectedLocation(location.id);
+                        setInVisible(!inVisible);
+                      }}
                       className={styles.showMore}
                     >
                       <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
