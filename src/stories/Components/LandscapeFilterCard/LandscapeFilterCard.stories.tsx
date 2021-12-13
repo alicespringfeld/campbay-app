@@ -6,4 +6,4 @@ export default {
   title: 'Components/LandscapeFilterCard',
 };
 
-export const Default = () => <LandscapeFilterCard />;
+export const Default = () => <LandscapeFilterCard setLandTags={undefined} />;
