@@ -1,0 +1,53 @@
+.mainContainer {
+  display: grid;
+  width: 100%;
+  background-color: var(--color-background);
+  font-family: var(--font-text);
+  position: fixed;
+  bottom: 0;
+}
+
+.container {
+  display: grid;
+}
+
+.swipeAway {
+  border: 0;
+  justify-self: center;
+}
+
+.detailContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  color: var(--color-primary);
+}
+
+.addressLine {
+  display: grid;
+  height: 3rem;
+  width: 100%;
+  background-color: rgb(196 196 196 / 33%);
+  padding-left: 0.5rem;
+  align-content: center;
+}
+
+.landscapeLine {
+  display: grid;
+  height: 3rem;
+  width: 100%;
+  padding-left: 0.5rem;
+  align-content: center;
+}
+
+.infraLine {
+  display: grid;
+  height: 3rem;
+  width: 100%;
+  background-color: rgb(196 196 196 / 40%);
+  padding-left: 0.5rem;
+  align-content: center;
+}
+
+.locationImage {
+  width: 100%;
+}

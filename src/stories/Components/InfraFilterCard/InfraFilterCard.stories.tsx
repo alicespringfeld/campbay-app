@@ -6,4 +6,4 @@ export default {
   title: 'Components/InfraFilterCard',
 };
 
-export const Default = () => <InfraFilterCard />;
+export const Default = () => <InfraFilterCard setInfratags={undefined} />;

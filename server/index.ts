@@ -4,7 +4,7 @@ import express from 'express';
 import path from 'path';
 import {
   connectDatabase,
-  //getLocationByAttribute,
+  // getLocationByAttribute,
   getLocationCollection,
   getLocationsBySearchQuery,
 } from './database';
@@ -26,7 +26,7 @@ app.get('/api/hello', (_request, response) => {
 // Get all locations and searched locations
 
 app.get('/api/locations', async (request, response) => {
-  console.log(request.query);
+  // console.log(request.query);
 
   // const locationCollection = getLocationCollection();
   // const cursor = locationCollection.find();
@@ -59,18 +59,23 @@ app.get('/api/locations', async (request, response) => {
 
 // Get a single location by attribute
 
-// app.get('/api/locations/:type/:value', async (request, response) => {
-//   const location = await getLocationByAttribute(
-//     request.params.type,
-//     request.params.value
-//   );
-
-//   if (location) {
-//     response.send(location);
-//   } else {
-//     response.status(404).send('This page is not here. Check another Castle 🏰');
-//   }
-// });
+app.get('/api/locations/search', async (request, response) => {
+  const infrastructure = request.query.infrastructure;
+  const landscape = request.query.landscape;
+  const locations = await getLocationsBySearchQuery();
+  const filteredLocations = locations.filter((location) => {
+    if (
+      location.infrastructure === infrastructure &&
+      location.landscape === landscape
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  console.log(filteredLocations);
+  response.json(filteredLocations);
+});
 
 // Add a new location
 app.post('/api/locations', async (request, response) => {

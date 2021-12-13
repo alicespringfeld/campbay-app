@@ -16,6 +16,7 @@
 .header {
   font-size: 16px;
   opacity: 0.4;
+  padding-top: 0.5rem;
 }
 
 .itag {
@@ -26,5 +27,6 @@
   font-family: var(--font-text);
   font-size: var(--font-size-secondary);
   padding: 1rem;
+  padding-top: 0.1rem;
   padding-left: 0.5rem;
 }

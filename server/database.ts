@@ -20,9 +20,9 @@ export function getLocationByAttribute(attribute: string, search: string) {
 
 // Get all Location if there's no searchrequest (fulltext)
 
-export function getLocationsBySearchQuery(search: string) {
-  const query = { $text: { $search: search } };
+export function getLocationsBySearchQuery(search?: string) {
   if (search) {
+    const query = { $text: { $search: search } };
     return getLocationCollection().find(query).toArray();
   }
   return getLocationCollection().find().toArray();

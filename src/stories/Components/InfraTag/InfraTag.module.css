@@ -15,7 +15,7 @@
 }
 
 .tag--state-selected {
-  background-color: green;
+  background-color: rgb(100 164 107 / 80%);
 }
 
 .tag--state-unselected {

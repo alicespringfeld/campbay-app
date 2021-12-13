@@ -13,22 +13,6 @@
   display: contents;
 }
 
-.navigateButton {
-  display: grid;
-  border: none;
-  border-radius: 50%;
-  width: 53.02px;
-  height: 56.01px;
-  place-items: center;
-  padding: 0.5px;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  position: absolute;
-  right: 1rem;
-  bottom: 6rem;
-  z-index: 400;
-  cursor: pointer;
-}
-
 .popupContent {
   width: 10rem;
   height: 12rem;
@@ -54,4 +38,74 @@
   cursor: pointer;
   text-align: center;
   margin-bottom: 0;
+}
+
+.mainContainer {
+  display: grid;
+  width: 100%;
+  background-color: var(--color-background);
+  font-family: var(--font-text);
+  position: fixed;
+  bottom: 0;
+}
+
+.container {
+  display: grid;
+}
+
+.swipeAway {
+  border: 0;
+  justify-self: center;
+}
+
+.popupContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  color: var(--color-primary);
+  align-content: center;
+}
+
+.detailContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  color: var(--color-primary);
+  justify-items: start;
+}
+
+.addressLine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3rem;
+  width: 100%;
+  background-color: rgb(196 196 196 / 33%);
+  padding-left: 0.5rem;
+  align-items: center;
+}
+
+.address {
+  color: var(--color-text);
+  font-size: 12px;
+}
+
+.landscapeLine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3rem;
+  width: 100%;
+  padding-left: 0.5rem;
+  align-items: center;
+}
+
+.infraLine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3rem;
+  width: 100%;
+  padding-left: 0.5rem;
+  background-color: rgb(196 196 196 / 40%);
+  align-items: center;
+}
+
+.locationPhoto {
+  width: 100%;
 }
