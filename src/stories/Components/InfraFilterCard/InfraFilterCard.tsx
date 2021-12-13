@@ -2,51 +2,51 @@ import React from 'react';
 import InfraTag from '../InfraTag/InfraTag';
 import styles from './InfraFilterCard.module.css';
 
-const INFRA_TAGS = [
+const infrastructureTags = [
   {
-    text: 'Costs',
+    text: 'costs',
     src: 'src/assets/FilterIcons_Campbay/costs.svg',
     selected: false,
     id: 0,
   },
   {
-    text: 'Timelimit',
+    text: 'timelimit',
     src: 'src/assets/FilterIcons_Campbay/timelimit.svg',
     selected: false,
     id: 1,
   },
   {
-    text: 'Toilet',
+    text: 'toilet',
     src: 'src/assets/FilterIcons_Campbay/toilet.svg',
     selected: false,
     id: 2,
   },
   {
-    text: 'Water',
+    text: 'water',
     src: 'src/assets/FilterIcons_Campbay/water.svg',
     selected: false,
     id: 3,
   },
   {
-    text: 'Fireplace allowed',
+    text: 'fire',
     src: 'src/assets/FilterIcons_Campbay/fire.svg',
     selected: false,
     id: 4,
   },
   {
-    text: 'Waste disposal',
+    text: 'waste',
     src: 'src/assets/FilterIcons_Campbay/waste.svg',
     selected: false,
     id: 5,
   },
   {
-    text: 'Shopping facilities',
+    text: 'shopping',
     src: 'src/assets/FilterIcons_Campbay/shopping.svg',
     selected: false,
     id: 6,
   },
   {
-    text: 'Power access',
+    text: 'power',
     src: 'src/assets/FilterIcons_Campbay/power.svg',
     selected: false,
     id: 7,
@@ -59,24 +59,28 @@ type InfraProps = {
 };
 
 export default function InfraFilterCard({
-  infraTags = INFRA_TAGS,
+  infraTags = infrastructureTags,
   setInfratags,
 }: InfraProps) {
-  function onITagClicked(id: number): void {
-    const newITags = [...infraTags];
-    const itag = newITags.find((itag) => itag.id === id);
-    if (itag) {
-      itag.selected = !itag.selected;
+  function onInfraTagClicked(id: number): void {
+    const newInfraTags = [...infraTags];
+    const infraTag = newInfraTags.find((infraTag) => infraTag.id === id);
+    if (infraTag) {
+      infraTag.selected = !infraTag.selected;
     }
-    setInfratags(newITags);
+    setInfratags(newInfraTags);
   }
 
   return (
     <div className={styles.cards}>
       <p className={styles.header}>Infrastructure</p>
       <div className={styles.itag}>
-        {infraTags.map((itag: any) => (
-          <InfraTag tag={itag} key={itag.id} onClick={onITagClicked} />
+        {infraTags.map((infraTag: any) => (
+          <InfraTag
+            tag={infraTag}
+            key={infraTag.id}
+            onClick={onInfraTagClicked}
+          />
         ))}
       </div>
     </div>

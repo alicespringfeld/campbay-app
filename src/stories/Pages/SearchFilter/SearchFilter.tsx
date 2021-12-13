@@ -1,72 +1,13 @@
 import React, { useState } from 'react';
 import InfraFilterCard from '../../Components/InfraFilterCard/InfraFilterCard';
-import LandscapeTag from '../../Components/LandscapeTag/LandscapeTag';
+import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeFilterCard';
 import styles from './SearchFilter.module.css';
-
-const landscapeTags = [
-  {
-    text: 'Forrest',
-    src: 'src/assets/FilterIcons_Campbay/forrest.svg',
-    selected: false,
-    id: 0,
-  },
-  {
-    text: 'Mountains',
-    src: 'src/assets/FilterIcons_Campbay/mountains.svg',
-    selected: false,
-    id: 1,
-  },
-  {
-    text: 'Field',
-    src: 'src/assets/FilterIcons_Campbay/fields.svg',
-    selected: false,
-    id: 2,
-  },
-  {
-    text: 'River',
-    src: 'src/assets/FilterIcons_Campbay/river.svg',
-    selected: false,
-    id: 3,
-  },
-  {
-    text: 'Lake',
-    src: 'src/assets/FilterIcons_Campbay/lake.svg',
-    selected: false,
-    id: 4,
-  },
-  {
-    text: 'City',
-    src: 'src/assets/FilterIcons_Campbay/city.svg',
-    selected: false,
-    id: 5,
-  },
-];
 
 export default function SearchFilter(): JSX.Element {
   const [filteredLocations, setFilteredLocations] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [ltags, setLTags] = useState(landscapeTags);
+  const [ltags, setLTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
 
-  // Select tag
-  function onLTagClicked(id: number): void {
-    const newLTags = [...ltags];
-    const ltag = newLTags.find((ltag) => ltag.id === id);
-    if (ltag) {
-      ltag.selected = !ltag.selected;
-    }
-    setLTags(newLTags);
-  }
-
-  //Get selected landscape
-  // function FilterFunction(): void {
-  //   const selectedLandscape = ltags
-  //     .filter((ltag) => ltag.selected === true)
-  //     .map((landscape) => landscape.text);
-  //   const selectedLandscapeList = selectedLandscape.join('+');
-  //   console.log(selectedLandscapeList);
-  //   setSearchQuery(selectedLandscapeList);
-  // }
   const disabledOptions =
     infraTags!.filter((tag) => tag.selected)?.length &&
     ltags!.filter((tag) => tag.selected)?.length;
@@ -93,14 +34,7 @@ export default function SearchFilter(): JSX.Element {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.cards}>
-        <p className={styles.header}>Landscape</p>
-        <div className={styles.tags}>
-          {ltags.map((ltag) => (
-            <LandscapeTag tag={ltag} key={ltag.id} onClick={onLTagClicked} />
-          ))}
-        </div>
-      </div>
+      <LandscapeFilterCard setLandTags={setLTags} />
       <InfraFilterCard setInfratags={setInfraTags} />
       <footer className={styles.footer}>
         <button className={styles.cancel}>

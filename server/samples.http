@@ -2,16 +2,9 @@
 
 GET http://localhost:3001/api/locations HTTP/1.1
 
-### GET a single location
+### GET a single location by attribute
 
-# GET http://localhost:3001/api/locations/landscape/fields HTTP/1.1
-
-###
-GET http://localhost:3001/api/locations?landscape=forest&landscape=lake&infrastructure=toilet HTTP/1.1
-
-###
-GET http://localhost:3001/api/locations?landscape=lake&infrastructure=toilet HTTP/1.1
-
+GET http://localhost:3001/api/locations/search?landscape=city&infrastructure=power HTTP/1.1
 
 
 
