@@ -36,3 +36,8 @@
   right: 2rem;
   border: 0;
 }
+
+button :disabled,
+button[disabled] {
+  opacity: 0.5;
+}

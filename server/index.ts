@@ -26,7 +26,7 @@ app.get('/api/hello', (_request, response) => {
 // Get all locations and searched locations
 
 app.get('/api/locations', async (request, response) => {
-  console.log(request.query);
+  // console.log(request.query);
 
   // const locationCollection = getLocationCollection();
   // const cursor = locationCollection.find();

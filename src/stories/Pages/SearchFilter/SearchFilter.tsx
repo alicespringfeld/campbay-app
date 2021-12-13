@@ -4,7 +4,7 @@ import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeF
 import styles from './SearchFilter.module.css';
 
 export default function SearchFilter(): JSX.Element {
-  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState<any[]>([]);
   const [ltags, setLTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
 
@@ -23,10 +23,8 @@ export default function SearchFilter(): JSX.Element {
         selectedInfraTags[0]?.text?.toLowerCase()
       );
       params.append('landscape', selectedLandscapeTags[0]?.text?.toLowerCase());
-      const infraResponse = await fetch(
-        `api/locations/search?${params.toString()}`
-      );
-      const body = await infraResponse.json();
+      const response = await fetch(`api/locations/search?${params.toString()}`);
+      const body = await response.json();
       setFilteredLocations(body);
       console.log(filteredLocations);
     }
