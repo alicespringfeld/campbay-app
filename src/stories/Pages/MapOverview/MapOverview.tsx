@@ -13,6 +13,7 @@ import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import { LatLng } from 'leaflet';
 import * as L from 'leaflet';
+import CenterButton from '../../Components/CenterButton/CenterButton';
 
 type LocationProps = {
   address: string;
@@ -22,28 +23,6 @@ type LocationProps = {
   longitude: number;
   id: number;
 };
-
-function CenterButton({ position, setPosition }: any) {
-  const map = useMap();
-  const locateAndFly = () => {
-    map.locate({ setView: true, maxZoom: map.getZoom() });
-  };
-
-  useMapEvents({
-    locationfound(e) {
-      setPosition(e.latlng);
-    },
-  });
-
-  return (
-    <button className={styles.navigateButton} onClick={() => locateAndFly()}>
-      <img
-        src="src/assets/FilterIcons_Campbay/navigateIcon.svg"
-        alt="navigate"
-      />
-    </button>
-  );
-}
 
 export default function MapOverview(): JSX.Element {
   const [locations, setLocations] = useState<LocationProps[] | null>([]);

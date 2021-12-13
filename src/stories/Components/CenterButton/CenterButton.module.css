@@ -1,0 +1,15 @@
+.navigateButton {
+  display: grid;
+  border: none;
+  border-radius: 50%;
+  width: 53.02px;
+  height: 56.01px;
+  place-items: center;
+  padding: 0.5px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  position: absolute;
+  right: 1rem;
+  bottom: 6rem;
+  z-index: 400;
+  cursor: pointer;
+}
