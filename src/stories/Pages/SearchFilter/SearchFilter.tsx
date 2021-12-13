@@ -4,19 +4,19 @@ import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeF
 import styles from './SearchFilter.module.css';
 
 export default function SearchFilter(): JSX.Element {
-  const [filteredLocations, setFilteredLocations] = useState<any[]>([]);
-  const [ltags, setLTags] = useState<any[]>([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [landscapeTags, setLandscapeTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
 
-  const disabledOptions =
+  const selectedOptions =
     infraTags!.filter((tag) => tag.selected)?.length &&
-    ltags!.filter((tag) => tag.selected)?.length;
+    landscapeTags!.filter((tag) => tag.selected)?.length;
 
   // Get array of filtered Locations
   async function getFilteredLocations(): Promise<void> {
-    if (infraTags && ltags) {
+    if (infraTags && landscapeTags) {
       const selectedInfraTags = infraTags.filter((tag) => tag.selected);
-      const selectedLandscapeTags = ltags.filter((tag) => tag.selected);
+      const selectedLandscapeTags = landscapeTags.filter((tag) => tag.selected);
       const params = new URLSearchParams();
       params.append(
         'infrastructure',
@@ -24,15 +24,15 @@ export default function SearchFilter(): JSX.Element {
       );
       params.append('landscape', selectedLandscapeTags[0]?.text?.toLowerCase());
       const response = await fetch(`api/locations/search?${params.toString()}`);
-      const body = await response.json();
-      setFilteredLocations(body);
+      const results = await response.json();
+      setFilteredLocations(results);
       console.log(filteredLocations);
     }
   }
 
   return (
     <div className={styles.pageContainer}>
-      <LandscapeFilterCard setLandTags={setLTags} />
+      <LandscapeFilterCard setLandTags={setLandscapeTags} />
       <InfraFilterCard setInfratags={setInfraTags} />
       <footer className={styles.footer}>
         <button className={styles.cancel}>
@@ -42,7 +42,7 @@ export default function SearchFilter(): JSX.Element {
           type="submit"
           onClick={getFilteredLocations}
           className={styles.filter}
-          disabled={!disabledOptions}
+          disabled={!selectedOptions}
         >
           <img src="src/assets/Filter_Button.svg" />
         </button>
