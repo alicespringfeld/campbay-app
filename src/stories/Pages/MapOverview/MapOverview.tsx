@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-  useMap,
-} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './MapOverview.module.css';
 import SearchBar from '../../Components/SearchBar';
@@ -43,17 +36,17 @@ export default function MapOverview(): JSX.Element {
 
   const currentMarker = new L.Icon({
     iconAnchor: [23, 53],
-    iconUrl: 'src/assets/pin (1) 1.png',
+    iconUrl: 'src/assets/currentLocation.png',
   });
   const allMarkers = new L.Icon({
     iconAnchor: [23, 53],
-    iconUrl: 'src/assets/FilterIcons_Campbay/pin 1.png',
+    iconUrl: 'src/assets/location.png',
   });
 
-  let popup;
+  let detailCard;
 
   if (selectedLocation) {
-    popup = (
+    detailCard = (
       <div className={styles.mainContainer}>
         {inVisible ? (
           <div className={styles.container}>
@@ -68,43 +61,55 @@ export default function MapOverview(): JSX.Element {
         {inVisible ? (
           <div>
             <img
-              className={styles.locationImage}
+              className={styles.locationPhoto}
               src={'src/assets/5597481_orig-1200x480 2.png'}
             />
             {locations!
               .filter((location) => location.id === selectedLocation)
               .map((filteredDetails) => (
-                <section
+                <div
                   key={filteredDetails.id}
                   className={styles.detailContainer}
                 >
                   <div className={styles.addressLine}>
-                    Adress: {filteredDetails.address}
+                    Adress:
+                    <div className={styles.address}>
+                      {filteredDetails.address}
+                    </div>
                   </div>
                   <div className={styles.landscapeLine}>
                     Landscape:
-                    <img
-                      src={`src/assets/FilterIcons_Campbay/${filteredDetails.landscape}.svg`}
-                      alt={'arrow'}
-                    />
+                    <div>
+                      <img
+                        src={`src/assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
+                        alt={'landicon'}
+                        className={styles.iconImage}
+                      />
+                    </div>
                   </div>
                   <div className={styles.infraLine}>
-                    Infrastructure: {filteredDetails.infrastructure}
+                    Infrastructure:
+                    <img
+                      src={`src/assets/DetailCard_IconTags/${filteredDetails.infrastructure}.svg`}
+                      alt={'infraicon'}
+                      className={styles.infraIcon}
+                    />
                   </div>
-                </section>
+                </div>
               ))}
           </div>
         ) : null}
       </div>
     );
   } else {
-    popup = (
+    detailCard = (
       <>
         <SearchBar onSearch={setSearch} />
         <FooterBar />
       </>
     );
   }
+
   return (
     <div className={styles.mapPage}>
       <MapContainer
@@ -131,7 +136,7 @@ export default function MapOverview(): JSX.Element {
                   src={'src/assets/0afa121612.jpg'}
                   alt={'camping'}
                 />
-                <div className={styles.detailContainer}>
+                <div className={styles.popupContainer}>
                   <h3 className={styles.adressLine}>{location.address}</h3>
                   <div>
                     <button
@@ -158,7 +163,7 @@ export default function MapOverview(): JSX.Element {
       </MapContainer>
       <SearchBar onSearch={setSearch} />
       <FooterBar />
-      {popup}
+      {detailCard}
     </div>
   );
 }
