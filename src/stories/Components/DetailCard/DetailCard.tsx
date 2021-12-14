@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-
-import styles from './DetailCard.module.css';
+import styles from '../DetailCard/DetailCard.module.css';
 
 export default function DetailCard() {
   const [visible, setVisible] = useState(true);

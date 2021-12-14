@@ -159,7 +159,7 @@ export default function MapOverview(): JSX.Element {
             <Popup>You are here</Popup>
           </Marker>
         )}
-        <CenterButton position={position} setPosition={setPosition} />
+        <CenterButton setPosition={setPosition} />
       </MapContainer>
       <SearchBar onSearch={setSearch} />
       <FooterBar />

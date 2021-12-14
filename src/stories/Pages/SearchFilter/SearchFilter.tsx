@@ -8,6 +8,8 @@ export default function SearchFilter(): JSX.Element {
   const [ltags, setLTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
 
+  console.log(filteredLocations);
+
   const disabledOptions =
     infraTags!.filter((tag) => tag.selected)?.length &&
     ltags!.filter((tag) => tag.selected)?.length;
@@ -26,7 +28,6 @@ export default function SearchFilter(): JSX.Element {
       const response = await fetch(`api/locations/search?${params.toString()}`);
       const body = await response.json();
       setFilteredLocations(body);
-      console.log(filteredLocations);
     }
   }
 

@@ -10,7 +10,7 @@ export default function App(): JSX.Element {
     <div>
       <Routes>
         <Route path="/home" element={<Start />} />
-        <Route path="/home" element={<MapOverview />} />
+        <Route path="/map" element={<MapOverview />} />
         <Route path="/filter" element={<SearchFilter />} />
       </Routes>
     </div>

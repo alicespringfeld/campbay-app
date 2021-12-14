@@ -1,7 +1,7 @@
-import { Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
+import { useMap, useMapEvents } from 'react-leaflet';
 import styles from './CenterButton.module.css';
 
-export default function CenterButton({ position, setPosition }: any) {
+export default function CenterButton({ setPosition }: any) {
   const map = useMap();
   const locateAndFly = () => {
     map.locate({ setView: true, maxZoom: map.getZoom() });
