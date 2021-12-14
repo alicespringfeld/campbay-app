@@ -2,7 +2,7 @@
   display: grid;
   height: 100vh;
   width: 100%;
-  background-image: url('src/assets/Background_Images/Title_Image.png');
+  background-image: url('../../../assets/Background_Images/Title_Image.png');
   background-size: cover;
 }
 
