@@ -4,7 +4,6 @@ import express from 'express';
 import path from 'path';
 import {
   connectDatabase,
-  // getLocationByAttribute,
   getLocationCollection,
   getLocationsBySearchQuery,
 } from './database';
@@ -19,17 +18,12 @@ app.use(express.json());
 
 app.use(express.static('dist'));
 
-app.get('/api/hello', (_request, response) => {
-  response.json({ message: 'Hello from the other side!' });
-});
-
 // Get all locations and searched locations
 
 app.get('/api/locations', async (request, response) => {
   const locations = await getLocationsBySearchQuery(
     request.query.search as string
   );
-
   if (locations) {
     response.send(locations);
   } else {
@@ -67,14 +61,16 @@ app.post('/api/locations', async (request, response) => {
     typeof newLocation.landscape !== 'string' ||
     typeof newLocation.infrastructure !== 'string' ||
     typeof newLocation.latitude !== 'number' ||
-    typeof newLocation.longitude !== 'number'
+    typeof newLocation.longitude !== 'number' ||
+    typeof newLocation.imageUrl !== 'string' ||
+    typeof newLocation.id !== 'number'
   ) {
     response.status(400).send('Missing properties');
     return;
   }
   // check if adress is already taken in our database
   const isLocationKnown = await locationCollection.findOne({
-    username: newLocation.address,
+    locationAddress: newLocation.address,
   });
   if (isLocationKnown) {
     response.status(409).send(`${newLocation.address} already exists`);
@@ -85,20 +81,19 @@ app.post('/api/locations', async (request, response) => {
 });
 
 // Delete a location
-app.delete('/api/locations/:coordinates', async (request, response) => {
+app.delete('/api/locations/:latitude', async (request, response) => {
   const locationCollection = getLocationCollection();
-  const locationCoordinates = request.params.coordinates;
-  const isLocationKnown = await locationCollection.findOne({
-    coordinates: locationCoordinates,
+  const location = request.params.latitude;
+  // const isLocationKnown = await locationCollection.findOne({
+  //   latitude: locationLatitude,
+  // });
+  const deleteResult = await locationCollection.deleteOne({
+    latitude: location,
   });
-  if (!isLocationKnown) {
-    response
-      .status(404)
-      .send("Location doesn't exist. Check another Castle 🏰");
-    return;
+  if (deleteResult.deletedCount) {
+    response.send('Delete successfull!');
   } else {
-    locationCollection.deleteOne({ coordinates: locationCoordinates });
-    response.send('Deleted');
+    response.status(404).send();
   }
 });
 
