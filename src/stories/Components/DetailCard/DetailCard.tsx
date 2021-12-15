@@ -31,7 +31,7 @@ export default function DetailCard() {
           {locations!
             .filter((location) => location.id === selectedLocation)
             .map((filteredDetails) => (
-              <div id={filteredDetails.id}>
+              <div key={filteredDetails.id}>
                 <img
                   className={styles.locationPhoto}
                   src={filteredDetails.imageUrl}
