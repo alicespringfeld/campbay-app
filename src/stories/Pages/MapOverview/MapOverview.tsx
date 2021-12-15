@@ -38,7 +38,7 @@ export default function MapOverview(): JSX.Element {
             {locations!
               .filter((location) => location.id === selectedLocation)
               .map((filteredDetails) => (
-                <div>
+                <div key={filteredDetails.id}>
                   <img
                     className={styles.locationPhoto}
                     src={filteredDetails.imageUrl}
