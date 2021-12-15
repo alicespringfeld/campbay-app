@@ -9,7 +9,7 @@ export default function App(): JSX.Element {
   return (
     <div>
       <Routes>
-        <Route path="/home" element={<Start />} />
+        <Route path="/" element={<Start />} />
         <Route path="/map" element={<MapOverview />} />
         <Route path="/filter" element={<SearchFilter />} />
       </Routes>
