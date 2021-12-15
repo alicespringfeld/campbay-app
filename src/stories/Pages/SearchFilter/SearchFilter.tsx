@@ -3,6 +3,8 @@ import InfraFilterCard from '../../Components/InfraFilterCard/InfraFilterCard';
 import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeFilterCard';
 import styles from './SearchFilter.module.css';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import FilterIcon from '../../../assets/Filter_Button.svg';
+import CancelIcon from '../../../assets/X-Icon.svg';
 
 export default function SearchFilter(): JSX.Element {
   const [filteredLocations, setFilteredLocations] = useState([]);
@@ -29,7 +31,7 @@ export default function SearchFilter(): JSX.Element {
       params.append('landscape', selectedLandscapeTags[0]?.text?.toLowerCase());
       const response = await fetch(`api/locations/search?${params.toString()}`);
       const body = await response.json();
-      console.log({ body });
+      // console.log({ body });
       setFilteredLocations(body);
       localStorage.setItem('filtered', JSON.stringify(filteredLocations));
       navigate('/map');
@@ -43,7 +45,7 @@ export default function SearchFilter(): JSX.Element {
       <footer className={styles.footer}>
         <Link to="/map">
           <button className={styles.cancel}>
-            <img src="src/assets/X-Icon.svg" />
+            <img src={CancelIcon} />
           </button>
         </Link>
 
@@ -53,7 +55,7 @@ export default function SearchFilter(): JSX.Element {
           className={styles.filter}
           disabled={!disabledOptions}
         >
-          <img src="src/assets/Filter_Button.svg" />
+          <img src={FilterIcon} />
         </button>
       </footer>
     </div>

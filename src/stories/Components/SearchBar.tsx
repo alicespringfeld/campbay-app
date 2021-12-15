@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../Components/SearchBar.module.css';
+import SearchIcon from '../../assets/magnifyingglass.svg';
+import CancelIcon from '../../assets/X-Icon.svg';
+import FilterIcon from '../../assets/Filter_Icon.svg';
 
 type SearchFormProps = {
   onSearch: (value: string) => void;
@@ -31,7 +34,7 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
     <>
       <div className={styles.header}>
         <form className={styles.container + ' ' + styles.searchBar}>
-          <img src="../src/assets/magnifyingglass.svg" />
+          <img src={SearchIcon} />
           <input
             className={styles.inputField}
             type="text"
@@ -40,12 +43,12 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
             onChange={(e) => setInputValue(e.target.value)}
           />
           <button className={styles.cancel} onClick={clearInput}>
-            <img src="src/assets/X-Icon.svg" />
+            <img src={CancelIcon} />
           </button>
         </form>
         <Link to="/filter">
           <button className={styles.filter}>
-            <img src="src/assets/Filter_Icon.svg" alt="filter" />
+            <img src={FilterIcon} alt="filter" />
           </button>
         </Link>
       </div>
