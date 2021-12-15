@@ -5,8 +5,8 @@ import styles from './MapOverview.module.css';
 import SearchBar from '../../Components/SearchBar';
 import FooterBar from '../../Components/FooterBar';
 import { LatLng } from 'leaflet';
-import * as L from 'leaflet';
 import CenterButton from '../../Components/CenterButton/CenterButton';
+import { currentMarker, allMarkers } from '../../Components/Markers';
 
 type LocationProps = {
   address: string;
@@ -38,15 +38,6 @@ export default function MapOverview(): JSX.Element {
   useEffect(() => {
     fetchLocations(search);
   }, [search]);
-
-  const currentMarker = new L.Icon({
-    iconAnchor: [10, 40],
-    iconUrl: 'src/assets/currentLocation.png',
-  });
-  const allMarkers = new L.Icon({
-    iconAnchor: [23, 53],
-    iconUrl: 'src/assets/location.png',
-  });
 
   let detailCard;
 

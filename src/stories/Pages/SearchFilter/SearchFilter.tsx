@@ -10,7 +10,7 @@ export default function SearchFilter(): JSX.Element {
   const [infraTags, setInfraTags] = useState<any[]>([]);
   const navigate = useNavigate();
 
-  console.log(filteredLocations);
+  // console.log(filteredLocations);
 
   const disabledOptions =
     infraTags!.filter((tag) => tag.selected)?.length &&
