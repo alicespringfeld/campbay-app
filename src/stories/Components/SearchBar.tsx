@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../Components/SearchBar.module.css';
 
 type SearchFormProps = {
@@ -42,9 +43,11 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
             <img src="src/assets/X-Icon.svg" />
           </button>
         </form>
-        <button className={styles.filter}>
-          <img src="src/assets/Filter_Icon.svg" alt="filter" />
-        </button>
+        <Link to="/filter">
+          <button className={styles.filter}>
+            <img src="src/assets/Filter_Icon.svg" alt="filter" />
+          </button>
+        </Link>
       </div>
     </>
   );

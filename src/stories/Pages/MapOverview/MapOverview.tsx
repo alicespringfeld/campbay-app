@@ -35,7 +35,7 @@ export default function MapOverview(): JSX.Element {
   }, [search]);
 
   const currentMarker = new L.Icon({
-    iconAnchor: [23, 53],
+    iconAnchor: [10, 40],
     iconUrl: 'src/assets/currentLocation.png',
   });
   const allMarkers = new L.Icon({
@@ -156,7 +156,7 @@ export default function MapOverview(): JSX.Element {
         ))}
         {position && (
           <Marker icon={currentMarker} position={position}>
-            <Popup>You are here</Popup>
+            <Popup position={position}>You are here</Popup>
           </Marker>
         )}
         <CenterButton setPosition={setPosition} />

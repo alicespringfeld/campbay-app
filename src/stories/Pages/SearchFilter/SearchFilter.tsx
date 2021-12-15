@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+// import { Link } from 'react-router-dom';
 import InfraFilterCard from '../../Components/InfraFilterCard/InfraFilterCard';
 import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeFilterCard';
 import styles from './SearchFilter.module.css';
+// import { useLocalStorage } from '../../../utils/useLocalStorage';
+import { Link } from 'react-router-dom';
 
 export default function SearchFilter(): JSX.Element {
-  const [filteredLocations, setFilteredLocations] = useState<any[]>([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
   const [ltags, setLTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
 
@@ -36,9 +39,12 @@ export default function SearchFilter(): JSX.Element {
       <LandscapeFilterCard setLandTags={setLTags} />
       <InfraFilterCard setInfratags={setInfraTags} />
       <footer className={styles.footer}>
-        <button className={styles.cancel}>
-          <img src="src/assets/X-Icon.svg" />
-        </button>
+        <Link to="/map">
+          <button className={styles.cancel}>
+            <img src="src/assets/X-Icon.svg" />
+          </button>
+        </Link>
+
         <button
           type="submit"
           onClick={getFilteredLocations}
