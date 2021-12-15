@@ -7,37 +7,19 @@ import FooterBar from '../../Components/FooterBar';
 import { LatLng } from 'leaflet';
 import CenterButton from '../../Components/CenterButton/CenterButton';
 import { currentMarker, allMarkers } from '../../Components/Markers';
-
-type LocationProps = {
-  address: string;
-  landscape: string;
-  infrastructure: string;
-  latitude: number;
-  longitude: number;
-  id: number;
-};
+import useLocations from '../../../utils/useLocations';
+import ArrowIcon from '../../../assets/ArrowIcon.png';
 
 export default function MapOverview(): JSX.Element {
   const retrievedObject: any = localStorage.getItem('filtered');
-  const [locations, setLocations] = useState<LocationProps[] | null>([]);
   const filteredLocations = JSON.parse(retrievedObject);
-
   console.log(retrievedObject);
   console.log({ filteredLocations });
   const [search, setSearch] = useState('');
+  const locations = useLocations(search);
   const [position, setPosition] = useState(new LatLng(0, 0));
   const [selectedLocation, setSelectedLocation] = useState(0);
   const [inVisible, setInVisible] = useState(true || false);
-
-  const fetchLocations = async (s: string) => {
-    const response = await fetch('/api/locations?search=' + s);
-    const data = await response.json();
-    setLocations(data);
-  };
-
-  useEffect(() => {
-    fetchLocations(search);
-  }, [search]);
 
   let detailCard;
 
@@ -50,46 +32,45 @@ export default function MapOverview(): JSX.Element {
               onClick={() => setInVisible(!inVisible)}
               className={styles.swipeAway}
             >
-              <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
+              <img src={ArrowIcon} alt={'arrow'} />
             </button>
-          </div>
-        ) : null}
-        {inVisible ? (
-          <div>
-            <img
-              className={styles.locationPhoto}
-              src={'src/assets/5597481_orig-1200x480 2.png'}
-            />
+
             {locations!
               .filter((location) => location.id === selectedLocation)
               .map((filteredDetails) => (
-                <div
-                  key={filteredDetails.id}
-                  className={styles.detailContainer}
-                >
-                  <div className={styles.addressLine}>
-                    Adress:
-                    <div className={styles.address}>
-                      {filteredDetails.address}
+                <div>
+                  <img
+                    className={styles.locationPhoto}
+                    src={filteredDetails.imageUrl}
+                  />
+                  <div
+                    key={filteredDetails.id}
+                    className={styles.detailContainer}
+                  >
+                    <div className={styles.addressLine}>
+                      Adress:
+                      <div className={styles.address}>
+                        {filteredDetails.address}
+                      </div>
                     </div>
-                  </div>
-                  <div className={styles.landscapeLine}>
-                    Landscape:
-                    <div>
+                    <div className={styles.landscapeLine}>
+                      Landscape:
+                      <div>
+                        <img
+                          src={`src/assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
+                          alt={'landicon'}
+                          className={styles.iconImage}
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.infraLine}>
+                      Infrastructure:
                       <img
-                        src={`src/assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
-                        alt={'landicon'}
-                        className={styles.iconImage}
+                        src={`src/assets/DetailCard_IconTags/${filteredDetails.infrastructure}.svg`}
+                        alt={'infraicon'}
+                        className={styles.infraIcon}
                       />
                     </div>
-                  </div>
-                  <div className={styles.infraLine}>
-                    Infrastructure:
-                    <img
-                      src={`src/assets/DetailCard_IconTags/${filteredDetails.infrastructure}.svg`}
-                      alt={'infraicon'}
-                      className={styles.infraIcon}
-                    />
                   </div>
                 </div>
               ))}
@@ -106,12 +87,12 @@ export default function MapOverview(): JSX.Element {
     );
   }
 
-  let finalLocations;
-  if (filteredLocations) {
-    finalLocations = filteredLocations;
-  } else {
-    finalLocations = locations;
-  }
+  // let finalLocations;
+  // if (filteredLocations) {
+  //   finalLocations = filteredLocations;
+  // } else {
+  //   finalLocations = locations;
+  // }
 
   return (
     <div className={styles.mapPage}>
@@ -126,7 +107,7 @@ export default function MapOverview(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {finalLocations?.map((location: any) => (
+        {locations?.map((location: any) => (
           <Marker
             icon={allMarkers}
             key={location.id}
@@ -136,7 +117,7 @@ export default function MapOverview(): JSX.Element {
               <div className={styles.popupContent}>
                 <img
                   className={styles.popupImage}
-                  src={'src/assets/0afa121612.jpg'}
+                  src={location.imageUrl}
                   alt={'camping'}
                 />
                 <div className={styles.popupContainer}>
@@ -149,7 +130,7 @@ export default function MapOverview(): JSX.Element {
                       }}
                       className={styles.showMore}
                     >
-                      <img src={'src/assets/Arrow 1.png'} alt={'arrow'} />
+                      <img src={ArrowIcon} alt={'arrow'} />
                     </button>
                   </div>
                 </div>
