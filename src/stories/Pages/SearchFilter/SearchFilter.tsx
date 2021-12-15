@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import InfraFilterCard from '../../Components/InfraFilterCard/InfraFilterCard';
 import LandscapeFilterCard from '../../Components/LandscapeFilterCard/LandscapeFilterCard';
 import styles from './SearchFilter.module.css';
-// import { useLocalStorage } from '../../../utils/useLocalStorage';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function SearchFilter(): JSX.Element {
   const [filteredLocations, setFilteredLocations] = useState([]);
   const [ltags, setLTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   console.log(filteredLocations);
 
@@ -30,7 +29,10 @@ export default function SearchFilter(): JSX.Element {
       params.append('landscape', selectedLandscapeTags[0]?.text?.toLowerCase());
       const response = await fetch(`api/locations/search?${params.toString()}`);
       const body = await response.json();
+      console.log({ body });
       setFilteredLocations(body);
+      localStorage.setItem('filtered', JSON.stringify(filteredLocations));
+      navigate('/map');
     }
   }
 

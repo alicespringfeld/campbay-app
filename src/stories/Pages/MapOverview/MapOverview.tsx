@@ -18,7 +18,12 @@ type LocationProps = {
 };
 
 export default function MapOverview(): JSX.Element {
+  const retrievedObject: any = localStorage.getItem('filtered');
   const [locations, setLocations] = useState<LocationProps[] | null>([]);
+  const filteredLocations = JSON.parse(retrievedObject);
+
+  console.log(retrievedObject);
+  console.log({ filteredLocations });
   const [search, setSearch] = useState('');
   const [position, setPosition] = useState(new LatLng(0, 0));
   const [selectedLocation, setSelectedLocation] = useState(0);
@@ -110,6 +115,13 @@ export default function MapOverview(): JSX.Element {
     );
   }
 
+  let finalLocations;
+  if (filteredLocations) {
+    finalLocations = filteredLocations;
+  } else {
+    finalLocations = locations;
+  }
+
   return (
     <div className={styles.mapPage}>
       <MapContainer
@@ -123,7 +135,7 @@ export default function MapOverview(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {locations?.map((location) => (
+        {finalLocations?.map((location: any) => (
           <Marker
             icon={allMarkers}
             key={location.id}
