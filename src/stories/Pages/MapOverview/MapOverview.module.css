@@ -85,6 +85,7 @@
 .address {
   color: var(--color-text);
   font-size: 12px;
+  padding-right: 1rem;
 }
 
 .landscapeLine {
