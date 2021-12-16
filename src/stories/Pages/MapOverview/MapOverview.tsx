@@ -57,7 +57,7 @@ export default function MapOverview(): JSX.Element {
                       Landscape:
                       <div>
                         <img
-                          src={`../../../assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
+                          src={`/../../../assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
                           alt={'landicon'}
                           className={styles.iconImage}
                         />
