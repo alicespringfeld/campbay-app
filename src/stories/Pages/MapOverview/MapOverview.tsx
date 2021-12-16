@@ -57,7 +57,7 @@ export default function MapOverview(): JSX.Element {
                       Landscape:
                       <div>
                         <img
-                          src={`https://res.cloudinary.com/dbbp26ulk/image/upload/v1639673309/LocationImages/DetailCardIcons/${filteredDetails.landscape}.png`}
+                          src={`/${filteredDetails.landscape}.png`}
                           alt={'landicon'}
                           className={styles.iconImage}
                         />
