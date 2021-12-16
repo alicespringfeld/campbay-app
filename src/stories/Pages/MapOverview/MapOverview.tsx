@@ -66,7 +66,7 @@ export default function MapOverview(): JSX.Element {
                     <div className={styles.infraLine}>
                       Infrastructure:
                       <img
-                        src={`dist/assets/DetailCard_IconTagsPNGs/${filteredDetails.infrastructure}.png`}
+                        src={`public/${filteredDetails.infrastructure}.png`}
                         alt={'infraicon'}
                         className={styles.infraIcon}
                       />
