@@ -57,7 +57,7 @@ export default function MapOverview(): JSX.Element {
                       Landscape:
                       <div>
                         <img
-                          src={`/../../../assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
+                          src={`https://res.cloudinary.com/dbbp26ulk/image/upload/v1639664226/LocationImages/FilterIcons/${filteredDetails.landscape}.svg`}
                           alt={'landicon'}
                           className={styles.iconImage}
                         />
@@ -66,7 +66,7 @@ export default function MapOverview(): JSX.Element {
                     <div className={styles.infraLine}>
                       Infrastructure:
                       <img
-                        src={`src/assets/DetailCard_IconTags/${filteredDetails.infrastructure}.svg`}
+                        src={`dist/assets/DetailCard_IconTagsPNGs/${filteredDetails.infrastructure}.png`}
                         alt={'infraicon'}
                         className={styles.infraIcon}
                       />
