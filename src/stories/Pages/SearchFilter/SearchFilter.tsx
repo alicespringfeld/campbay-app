@@ -7,7 +7,6 @@ import FilterIcon from '../../../assets/Filter_Button.svg';
 import CancelIcon from '../../../assets/X-Icon.svg';
 
 export default function SearchFilter(): JSX.Element {
-  const [filteredLocations, setFilteredLocations] = useState([]);
   const [ltags, setLTags] = useState<any[]>([]);
   const [infraTags, setInfraTags] = useState<any[]>([]);
   const navigate = useNavigate();
@@ -32,8 +31,7 @@ export default function SearchFilter(): JSX.Element {
       const response = await fetch(`api/locations/search?${params.toString()}`);
       const body = await response.json();
       // console.log({ body });
-      setFilteredLocations(body);
-      localStorage.setItem('filtered', JSON.stringify(filteredLocations));
+      localStorage.setItem('filtered', JSON.stringify(body));
       navigate('/map');
     }
   }

@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100%;
   background-size: cover;
-  background-image: url('src/assets/Background_Images/ForrestClouds_Background.png');
+  background-image: url('../../../assets/Background_Images/ForrestClouds_Background.png');
   grid-template-rows: 1fr 1fr;
   justify-content: center;
   padding: 3rem 2rem;

@@ -57,7 +57,7 @@ export default function MapOverview(): JSX.Element {
                       Landscape:
                       <div>
                         <img
-                          src={`src/assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
+                          src={`../../../assets/DetailCard_IconTags/${filteredDetails.landscape}.svg`}
                           alt={'landicon'}
                           className={styles.iconImage}
                         />
@@ -87,12 +87,12 @@ export default function MapOverview(): JSX.Element {
     );
   }
 
-  // let finalLocations;
-  // if (filteredLocations) {
-  //   finalLocations = filteredLocations;
-  // } else {
-  //   finalLocations = locations;
-  // }
+  let finalLocations;
+  if (filteredLocations) {
+    finalLocations = filteredLocations;
+  } else {
+    finalLocations = locations;
+  }
 
   return (
     <div className={styles.mapPage}>
@@ -107,7 +107,7 @@ export default function MapOverview(): JSX.Element {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {locations?.map((location: any) => (
+        {finalLocations?.map((location: any) => (
           <Marker
             icon={allMarkers}
             key={location.id}
