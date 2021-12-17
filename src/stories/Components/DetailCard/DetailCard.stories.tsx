@@ -6,4 +6,6 @@ export default {
   title: 'Components/DetailCard',
 };
 
-export const Default = () => <DetailCard />;
+export const Default = () => (
+  <DetailCard imageUrl={''} address={''} landscape={''} infrastructure={''} />
+);
