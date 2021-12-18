@@ -38,8 +38,12 @@ export default function SearchFilter(): JSX.Element {
 
   return (
     <div className={styles.pageContainer}>
-      <LandscapeFilterCard setLandTags={setLTags} />
-      <InfraFilterCard setInfratags={setInfraTags} />
+      <div className={styles.landscapeFilter}>
+        <LandscapeFilterCard setLandTags={setLTags} />
+      </div>
+      <div className={styles.infraFilter}>
+        <InfraFilterCard setInfratags={setInfraTags} />
+      </div>
       <footer className={styles.footer}>
         <Link to="/map">
           <button className={styles.cancel}>
