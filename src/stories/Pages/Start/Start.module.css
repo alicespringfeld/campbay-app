@@ -22,7 +22,7 @@
   color: var(--color-text);
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  animation: 6s ease 0s normal forwards 1 fadein;
+  animation: 4s ease 0s normal forwards 1 fadein;
 }
 
 @keyframes fadein {
@@ -63,12 +63,12 @@
   bottom: 43%;
   text-align: center;
   margin-top: 6rem;
-  animation: 3s ease-in 1 mymove;
+  animation: 3s ease-in 1 movefromleft;
 }
 
-@keyframes mymove {
+@keyframes movefromleft {
   from {
-    left: -300px;
+    left: -400px;
   }
 
   to {
@@ -82,4 +82,15 @@
   bottom: 30%;
   font-size: 8vw;
   color: #fff;
+  animation: 3s ease-in 1 mymove;
+}
+
+@keyframes mymove {
+  from {
+    right: -400px;
+  }
+
+  to {
+    right: 35px;
+  }
 }

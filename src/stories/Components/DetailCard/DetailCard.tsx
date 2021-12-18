@@ -26,25 +26,26 @@ export default function DetailCard({
       <div className={styles.close}>
         <img src={ArrowIcon} alt={'arrow'} onClick={close} />
       </div>
-      <img className={styles.locationPhoto} src={imageUrl} />
+      <article className={styles.scrollContent}>
+        <img className={styles.locationPhoto} src={imageUrl} />
+        <div className={styles.addressLine}>
+          <span>Adress:</span>
+          <span className={styles.address}>{address}</span>
+        </div>
 
-      <div className={styles.addressLine}>
-        <span>Adress:</span>
-        <span className={styles.address}>{address}</span>
-      </div>
-
-      <div className={styles.landscapeLine}>
-        <span> Landscape: </span>
-        <img src={landscape} alt={'landicon'} className={styles.iconImage} />
-      </div>
-      <div className={styles.infraLine}>
-        <span>Infrastructure:</span>
-        <img
-          src={infrastructure}
-          alt={'infraicon'}
-          className={styles.iconImage}
-        />
-      </div>
+        <div className={styles.landscapeLine}>
+          <span> Landscape: </span>
+          <img src={landscape} alt={'landicon'} className={styles.iconImage} />
+        </div>
+        <div className={styles.infraLine}>
+          <span>Infrastructure:</span>
+          <img
+            src={infrastructure}
+            alt={'infraicon'}
+            className={styles.iconImage}
+          />
+        </div>
+      </article>
     </main>
   );
 }
