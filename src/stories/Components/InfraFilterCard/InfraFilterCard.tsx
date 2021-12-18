@@ -1,61 +1,53 @@
 import React from 'react';
 import InfraTag from '../InfraTag/InfraTag';
 import styles from './InfraFilterCard.module.css';
-import Costs from '../../../assets/FilterIcons_Campbay/costs.svg';
-import Timelimit from '../../../assets/FilterIcons_Campbay/timelimit.svg';
-import Toilet from '../../../assets/FilterIcons_Campbay/toilet.svg';
-import Water from '../../../assets/FilterIcons_Campbay/water.svg';
-import Fire from '../../../assets/FilterIcons_Campbay/fire.svg';
-import Waste from '../../../assets/FilterIcons_Campbay/waste.svg';
-import Shopping from '../../../assets/FilterIcons_Campbay/shopping.svg';
-import Power from '../../../assets/FilterIcons_Campbay/power.svg';
 
 const infrastructureTags = [
   {
     text: 'costs',
-    src: Costs,
+    src: 'src/assets/FilterIcons_Campbay/costs.svg',
     selected: false,
     id: 0,
   },
   {
     text: 'timelimit',
-    src: Timelimit,
+    src: 'src/assets/FilterIcons_Campbay/timelimit.svg',
     selected: false,
     id: 1,
   },
   {
     text: 'toilet',
-    src: Toilet,
+    src: 'src/assets/FilterIcons_Campbay/toilet.svg',
     selected: false,
     id: 2,
   },
   {
     text: 'water',
-    src: Water,
+    src: 'src/assets/FilterIcons_Campbay/water.svg',
     selected: false,
     id: 3,
   },
   {
     text: 'fire',
-    src: Fire,
+    src: 'src/assets/FilterIcons_Campbay/fire.svg',
     selected: false,
     id: 4,
   },
   {
     text: 'waste',
-    src: Waste,
+    src: 'src/assets/FilterIcons_Campbay/waste.svg',
     selected: false,
     id: 5,
   },
   {
     text: 'shopping',
-    src: Shopping,
+    src: 'src/assets/FilterIcons_Campbay/shopping.svg',
     selected: false,
     id: 6,
   },
   {
     text: 'power',
-    src: Power,
+    src: 'src/assets/FilterIcons_Campbay/power.svg',
     selected: false,
     id: 7,
   },
