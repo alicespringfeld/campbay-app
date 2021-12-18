@@ -9,6 +9,9 @@ import CenterButton from '../../Components/CenterButton/CenterButton';
 import { currentMarker, allMarkers } from '../../Components/Markers';
 import useLocations from '../../../utils/useLocations';
 import ArrowIcon from '../../../assets/ArrowIcon.png';
+import DetailCard, {
+  DetailCardProps,
+} from '../../Components/DetailCard/DetailCard';
 
 export default function MapOverview(): JSX.Element {
   const retrievedObject: any = localStorage.getItem('filtered');
@@ -18,73 +21,11 @@ export default function MapOverview(): JSX.Element {
   const [search, setSearch] = useState('');
   const locations = useLocations(search);
   const [position, setPosition] = useState(new LatLng(0, 0));
-  const [selectedLocation, setSelectedLocation] = useState(0);
-  const [inVisible, setInVisible] = useState(true || false);
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [detail, setDetail] = useState<DetailCardProps | null>(null);
 
-  let detailCard;
-
-  if (selectedLocation) {
-    detailCard = (
-      <div className={styles.mainContainer}>
-        {inVisible ? (
-          <div className={styles.container}>
-            <button
-              onClick={() => setInVisible(!inVisible)}
-              className={styles.swipeAway}
-            >
-              <img src={ArrowIcon} alt={'arrow'} />
-            </button>
-
-            {locations!
-              .filter((location) => location.id === selectedLocation)
-              .map((filteredDetails) => (
-                <div key={filteredDetails.id}>
-                  <img
-                    className={styles.locationPhoto}
-                    src={filteredDetails.imageUrl}
-                  />
-                  <div
-                    key={filteredDetails.id}
-                    className={styles.detailContainer}
-                  >
-                    <div className={styles.addressLine}>
-                      Adress:
-                      <div className={styles.address}>
-                        {filteredDetails.address}
-                      </div>
-                    </div>
-                    <div className={styles.landscapeLine}>
-                      Landscape:
-                      <div>
-                        <img
-                          src={`/${filteredDetails.landscape}.png`}
-                          alt={'landicon'}
-                          className={styles.iconImage}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.infraLine}>
-                      Infrastructure:
-                      <img
-                        src={`/${filteredDetails.infrastructure}.png`}
-                        alt={'infraicon'}
-                        className={styles.infraIcon}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        ) : null}
-      </div>
-    );
-  } else {
-    detailCard = (
-      <>
-        <SearchBar onSearch={setSearch} />
-        <FooterBar />
-      </>
-    );
+  function close() {
+    setDetail(null);
   }
 
   let finalLocations;
@@ -125,8 +66,9 @@ export default function MapOverview(): JSX.Element {
                   <div>
                     <button
                       onClick={() => {
-                        setSelectedLocation(location.id);
-                        setInVisible(!inVisible);
+                        setDetail(location);
+
+                        console.log(location);
                       }}
                       className={styles.showMore}
                     >
@@ -147,7 +89,19 @@ export default function MapOverview(): JSX.Element {
       </MapContainer>
       <SearchBar onSearch={setSearch} />
       <FooterBar />
-      {detailCard}
+
+      <div>
+        {detail && (
+          <DetailCard
+            id={detail.id}
+            imageUrl={detail.imageUrl}
+            address={detail.address}
+            landscape={`/${detail.landscape}.png`}
+            infrastructure={`/${detail.infrastructure}.png`}
+            close={() => close()}
+          />
+        )}
+      </div>
     </div>
   );
 }

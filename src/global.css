@@ -34,6 +34,10 @@ body {
   margin: 0;
 }
 
+button {
+  border: none;
+}
+
 ::placeholder {
   font-family: var(--font-text);
   opacity: 0.5;
