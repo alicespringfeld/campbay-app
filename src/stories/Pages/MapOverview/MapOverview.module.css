@@ -1,16 +1,16 @@
+.mapPage {
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100vh;
+  position: relative;
+  display: contents;
+}
+
 .leafletContainer {
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
   position: fixed;
   z-index: -1;
-}
-
-.mapPage {
-  grid-template-rows: 1fr 1fr 1fr;
-  height: 100vh;
-  position: relative;
-  display: contents;
 }
 
 .popupContent {
@@ -40,73 +40,9 @@
   margin-bottom: 0;
 }
 
-.mainContainer {
-  display: grid;
-  width: 100%;
-  background-color: var(--color-background);
-  font-family: var(--font-text);
-  position: fixed;
-  bottom: 0;
-}
-
-.container {
-  display: grid;
-}
-
-.swipeAway {
-  border: 0;
-  justify-self: center;
-}
-
 .popupContainer {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   color: var(--color-primary);
   align-content: center;
-}
-
-.detailContainer {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  color: var(--color-primary);
-  justify-items: start;
-}
-
-.addressLine {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 3rem;
-  width: 100%;
-  background-color: rgb(196 196 196 / 33%);
-  padding-left: 0.5rem;
-  align-items: center;
-}
-
-.address {
-  color: var(--color-text);
-  font-size: 12px;
-  padding-right: 1rem;
-}
-
-.landscapeLine {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 3rem;
-  width: 100%;
-  padding-left: 0.5rem;
-  align-items: center;
-}
-
-.infraLine {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 3rem;
-  width: 100%;
-  padding-left: 0.5rem;
-  background-color: rgb(196 196 196 / 40%);
-  align-items: center;
-}
-
-.locationPhoto {
-  width: 100%;
 }
