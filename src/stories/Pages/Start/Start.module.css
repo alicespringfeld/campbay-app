@@ -7,11 +7,6 @@
   background-size: cover;
 }
 
-.logo {
-  width: 12rem;
-  pointer-events: none;
-}
-
 .startTab {
   text-decoration: none;
   text-align: center;
@@ -27,6 +22,21 @@
   color: var(--color-text);
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  animation: 6s ease 0s normal forwards 1 fadein;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .logoContainer {
@@ -38,6 +48,7 @@
   line-height: 0;
   position: relative;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  animation: 1s ease 0s normal forwards 1 fadein;
 }
 
 .logoContainer::after {
@@ -52,6 +63,17 @@
   bottom: 43%;
   text-align: center;
   margin-top: 6rem;
+  animation: 3s ease-in 1 mymove;
+}
+
+@keyframes mymove {
+  from {
+    left: -300px;
+  }
+
+  to {
+    left: 28px;
+  }
 }
 
 .logoText {
