@@ -89,7 +89,6 @@ export default function MapOverview(): JSX.Element {
       </MapContainer>
       <SearchBar onSearch={setSearch} />
       <FooterBar />
-
       <div className={styles.detailCard}>
         {detail && (
           <DetailCard
