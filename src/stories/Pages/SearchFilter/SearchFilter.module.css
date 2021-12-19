@@ -21,6 +21,13 @@
   }
 }
 
+@media (min-height: 568px) {
+  .pageContainer {
+    gap: 2%;
+    bottom: 0.7rem;
+  }
+}
+
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
