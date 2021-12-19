@@ -2,14 +2,23 @@
   display: grid;
   height: 100vh;
   width: 100%;
+  align-content: center;
+  place-content: center;
   background-size: cover;
   background-image: url('../../../assets/Background_Images/ForrestClouds_Background.png');
-  grid-template-rows: 1fr 1fr;
-  justify-content: center;
-  padding: 3rem 2rem;
-  padding-bottom: 4.5rem;
-  padding-top: 1rem;
-  gap: 0.5rem;
+  position: absolute;
+  padding-bottom: 6rem;
+  padding-top: 3rem;
+  gap: 2rem;
+}
+
+@media (min-width: 1000px) {
+  .pageContainer {
+    grid-template-columns: repeat(2, 1fr);
+    position: absolute;
+    place-items: center;
+    gap: 0;
+  }
 }
 
 .footer {

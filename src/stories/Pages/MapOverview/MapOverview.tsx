@@ -21,7 +21,6 @@ export default function MapOverview(): JSX.Element {
   const [search, setSearch] = useState('');
   const locations = useLocations(search);
   const [position, setPosition] = useState(new LatLng(0, 0));
-  const [selectedLocation, setSelectedLocation] = useState('');
   const [detail, setDetail] = useState<DetailCardProps | null>(null);
 
   function close() {
@@ -67,7 +66,6 @@ export default function MapOverview(): JSX.Element {
                     <button
                       onClick={() => {
                         setDetail(location);
-
                         console.log(location);
                       }}
                       className={styles.showMore}
@@ -82,15 +80,16 @@ export default function MapOverview(): JSX.Element {
         ))}
         {position && (
           <Marker icon={currentMarker} position={position}>
-            <Popup position={position}>You are here</Popup>
+            <Popup position={position}>
+              <p className={styles.popUpText}>You are here!</p>
+            </Popup>
           </Marker>
         )}
         <CenterButton setPosition={setPosition} />
       </MapContainer>
       <SearchBar onSearch={setSearch} />
       <FooterBar />
-
-      <div>
+      <div className={styles.detailCard}>
         {detail && (
           <DetailCard
             id={detail.id}

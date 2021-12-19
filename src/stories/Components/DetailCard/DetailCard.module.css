@@ -1,8 +1,15 @@
+.close {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  position: sticky;
+}
+
 .mainContainer {
   display: grid;
-  grid-template-rows: 6% 60% 1fr 1fr 1fr;
+  grid-template-rows: 6% 94%;
   width: 100%;
-  height: auto;
+  height: 70%;
   background-color: var(--color-background);
   font-family: var(--font-text);
   position: fixed;
@@ -11,19 +18,17 @@
   color: var(--color-primary);
 }
 
+.mainContainer .scrollContent {
+  display: grid;
+  grid-auto-flow: row;
+  overflow: scroll;
+  grid-template-rows: unset;
+}
+
 .mainContainer .locationPhoto {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.container {
-  display: grid;
-}
-
-.close {
-  display: grid;
-  place-items: center;
 }
 
 .addressLine {
@@ -32,11 +37,14 @@
   background-color: rgb(196 196 196 / 33%);
   padding-left: 0.5rem;
   align-items: center;
+  font-size: 3vw;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 .address {
   color: var(--color-text);
-  font-size: 12px;
+  font-size: 3vw;
 }
 
 .landscapeLine {
@@ -44,6 +52,7 @@
   grid-template-columns: 1fr 1fr;
   padding-left: 0.5rem;
   align-items: center;
+  font-size: 3vw;
 }
 
 .infraLine {
@@ -52,8 +61,11 @@
   padding-left: 0.5rem;
   background-color: rgb(196 196 196 / 40%);
   align-items: center;
+  font-size: 3vw;
 }
 
 .iconImage {
-  padding-top: 0.3rem;
+  width: 30%;
+  padding-top: 2%;
+  padding-bottom: 1%;
 }

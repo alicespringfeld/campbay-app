@@ -1,14 +1,14 @@
 import React from 'react';
 import InfraTag from '../InfraTag/InfraTag';
 import styles from './InfraFilterCard.module.css';
-import Costs from '../../../assets/FilterIcons_Campbay/costs.svg';
-import Timelimit from '../../../assets/FilterIcons_Campbay/timelimit.svg';
-import Toilet from '../../../assets/FilterIcons_Campbay/toilet.svg';
-import Water from '../../../assets/FilterIcons_Campbay/water.svg';
-import Fire from '../../../assets/FilterIcons_Campbay/fire.svg';
-import Waste from '../../../assets/FilterIcons_Campbay/waste.svg';
-import Shopping from '../../../assets/FilterIcons_Campbay/shopping.svg';
-import Power from '../../../assets/FilterIcons_Campbay/power.svg';
+import Costs from '../../../assets/FilterIcons_Campbay/costs.png';
+import Timelimit from '../../../assets/FilterIcons_Campbay/timelimit.png';
+import Toilet from '../../../assets/FilterIcons_Campbay/toilet.png';
+import Water from '../../../assets/FilterIcons_Campbay/water.png';
+import Fire from '../../../assets/FilterIcons_Campbay/fire.png';
+import Waste from '../../../assets/FilterIcons_Campbay/waste.png';
+import Shopping from '../../../assets/FilterIcons_Campbay/shopping.png';
+import Power from '../../../assets/FilterIcons_Campbay/power.png';
 
 const infrastructureTags = [
   {

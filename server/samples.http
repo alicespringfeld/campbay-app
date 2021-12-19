@@ -12,13 +12,13 @@ POST http://localhost:3001/api/locations HTTP/1.1
 Content-Type: application/json
 
 {
-    "address": "Mittenwalder Str. 97, 82431 Kochel am See",
-    "landscape": "lake",
-    "infrastructure": "waste",
-    "latitude": 47.64159,
-    "longitude": 11.35814,
-    "imageUrl": "src/assets/LocationImages/KochelLake.jpg",
-    "id": 12
+    "address": "Kurhausstraße 18, 79674 Todtnau",
+    "landscape": "mountains",
+    "infrastructure": "timelimit",
+    "latitude": 47.84389,
+    "longitude": 7.93614,
+    "imageUrl": "https://res.cloudinary.com/dbbp26ulk/image/upload/v1639913417/LocationImages/TodtnauVan_zkn6hm.jpg",
+    "id": 2
 }
 
 ### Delete a location
