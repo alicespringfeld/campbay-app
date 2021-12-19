@@ -46,3 +46,8 @@
   color: var(--color-primary);
   align-content: center;
 }
+
+.popUpText {
+  font-family: var(--font-text);
+  color: var(--color-primary);
+}
