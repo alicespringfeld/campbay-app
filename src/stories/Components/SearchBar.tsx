@@ -34,7 +34,11 @@ export default function SearchBar({ onSearch }: SearchFormProps) {
     <>
       <div className={styles.header}>
         <form className={styles.container + ' ' + styles.searchBar}>
-          <img src={SearchIcon} />
+          <img
+            src={SearchIcon}
+            alt={'searchIcon'}
+            className={styles.searchIcon}
+          />
           <input
             className={styles.inputField}
             type="text"

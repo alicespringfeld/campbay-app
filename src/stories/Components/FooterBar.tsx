@@ -16,7 +16,7 @@ export default function FooterBar() {
       </a>
 
       <button onClick={deleteItems} className={styles.clearFilter}>
-        <img src={CancelIcon} alt={'clearFilter'} />
+        <img src={CancelIcon} alt={'clearFilter'} className={styles.xIcon} />
         <div>Clear Filter</div>
       </button>
     </div>

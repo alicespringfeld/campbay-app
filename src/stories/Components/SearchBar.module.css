@@ -21,6 +21,10 @@
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
+.searchIcon {
+  width: 1.8rem;
+}
+
 .inputField {
   border: none;
   margin: 0;
@@ -29,10 +33,12 @@
 }
 
 .cancel {
-  vertical-align: middle;
+  position: fixed;
   border: none;
   background: none;
-  padding-right: 0.5rem;
+  right: 1.5%;
+  top: 1rem;
+  justify-self: center;
 }
 
 .searchBar {
