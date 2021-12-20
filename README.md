@@ -1,15 +1,12 @@
-# Vite Boilerplate
+# Campbay
 
-> Quickly bootstrap a new project with Vite Boilerplate.
+> Helps Vandrivers discover new camping spots in Germany
 
-This boilerplate contains all the tools you need to build a modern web app with TypeScript, React, Vite, Storybook and Express.  
-You can use it to quickly bootstrap your project.
-
-ESLint, stylelint, prettier, husky and lintstaged are configured to give you a solid development experience.
+Users can find new locotions via full-text search or filter their searchquery for particular qualitys. The results are displayed on a Map, where the user can click or tab on Markers and see details, like address, infrastructure or landscape of the location.
 
 ## Installing / Developing
 
-First, [create a repository from this template](https://github.com/alicespringfeld/app-template).
+First, [clone this repository](https://github.com/alicespringfeld/campbay-app).
 
 Now you are ready to go:
 
@@ -17,7 +14,7 @@ Now you are ready to go:
 npm install
 ```
 
-This will install the dependencies required to run the boilerplate.
+This will install the dependencies required to run the app.
 
 ```shell
 npm run dev
